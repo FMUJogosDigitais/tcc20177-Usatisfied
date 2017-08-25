@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: fdc985344f674254d9caf2510e1728d2
+timeCreated: 1492211307
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 100
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Eight Track
+  fontNames:
+  - Eight Track
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

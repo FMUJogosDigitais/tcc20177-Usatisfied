@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 84e6afb6e8046524cbf41278f2437641
+timeCreated: 1493482820
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 100
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Comfortably Fucked
+  fontNames:
+  - Comfortably Fucked
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

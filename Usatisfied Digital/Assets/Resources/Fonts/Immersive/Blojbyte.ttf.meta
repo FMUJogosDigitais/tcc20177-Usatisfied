@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: c2b4e85038a252643a00004e65db8133
+timeCreated: 1493488787
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 100
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Bl?jbytesdep?
+  fontNames:
+  - Blojbyte
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 67bad90c60b467c40a1e86a6d0b57430, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
