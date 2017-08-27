@@ -1,0 +1,342 @@
+﻿using System.Collections;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using UnityEngine;
+
+namespace MyTools.Localization
+{
+    public class LocalizationManager : IDontDestroy<LocalizationManager>
+    {
+
+        public enum Languages { en_US, pt_BR, fr, es } // 
+        public static Languages defaultLang = Languages.en_US;
+        public static Languages language = Languages.en_US;
+
+        private static Languages[] avariableLanguages;
+        private static string resourceLanguagesFiles = "Languages/";
+        private static string resourceFlagsFiles = "Sprites/Flags/";
+
+        private enum ReadPhase { None, Singular, Plural, TSingular, TPlural }
+        private static Dictionary<string, string[]> textTable;
+        public bool IsInitialized
+        {
+            get { return initialized; }
+        }
+        private static int nplural = 0;
+        private static string fplural = "";
+        private bool initialized = false;
+
+        public delegate void ChangeLanguageEventHandler(LocalizationManager thisLanguage);
+        public event ChangeLanguageEventHandler OnChangeLanguage;
+
+        public override void Awake()
+        {
+            base.Awake();
+            avariableLanguages = GetAvailableLanguages();
+            language = (LanguagePlayerPref.IsSetPlayerLanguage()) ?LanguagePlayerPref.GetSetPlayerLanguage():defaultLang;
+        }
+        public void ChangeLanguage(Languages lng)
+        {
+            language = lng;
+            LoadFile(lng);
+            // dispara todos os listens para a troca de texto;
+            if (IsInitialized && OnChangeLanguage != null)
+            {
+                OnChangeLanguage(this);
+            }
+        }
+        public static void SetNewLanguage(Languages lng)
+        {
+            language = lng;
+            LanguagePlayerPref.SetPlayerLanguage(lng);
+        }
+        public static string GetText(string key)
+        {
+            string result = key;
+            if (key != null && textTable != null)
+            {
+                if (textTable.ContainsKey(key))
+                {
+                    result = (string)textTable[key][0];
+
+                }
+            }
+            return (string)result;
+        }
+        public static string GetText(string key, string plural, float val)
+        {
+            string result = "0";
+            int aplural = PluralForm(val, fplural);
+            if (aplural > 0)
+            {
+                result = plural;
+                if (plural != null && textTable != null)
+                {
+                    if (textTable.ContainsKey(plural) && textTable[plural][aplural] != null)
+                    {
+                        result = (string)textTable[plural][aplural];
+
+                    }
+                }
+            }
+            else
+            {
+                result = GetText(key);
+            }
+
+            return (string)result;
+        }
+
+        public static Languages[] GetAvailableLanguages()
+        {
+            if (avariableLanguages == null)
+            {
+                List<Languages> listAvariableLang = new List<Languages>();
+                string[] languageFiles = Directory.GetFiles(GetPoPath());
+                Languages selectedLanguage;
+                int ilang = languageFiles.Length;
+                for (int i = 0; i < ilang; i++)
+                {
+                    if (Path.GetExtension(languageFiles[i]) != ".po")
+                        continue;
+                    if (EnumParse.TryParseEnum<Languages>(Path.GetFileNameWithoutExtension(languageFiles[i]), out selectedLanguage))
+                    {
+                        listAvariableLang.Add(selectedLanguage);
+                    }
+                }
+                listAvariableLang.Sort();
+                avariableLanguages = listAvariableLang.ToArray();
+            }
+            return avariableLanguages;
+        }
+        public static Sprite GetLanguageFlag(Languages lng)
+        {
+            string newlng = lng.ToString().Replace("_", "-");
+            CultureInfo newCulture = new CultureInfo(newlng);
+            newlng = (newCulture.Name.Length > 3) ? newCulture.Name.Substring(newCulture.Name.Length - 2) : newCulture.Name;
+            newlng.ToLower();
+
+            return Resources.Load<Sprite>(resourceFlagsFiles + newlng);
+        }
+        public static string GetLanguageName(Languages lng)
+        {
+            string newlng = lng.ToString().Replace("_", "-");
+            CultureInfo newCulture = new CultureInfo(newlng);
+            return newCulture.EnglishName;
+        }
+        private static string GetPoPath()
+        {
+            string fullpath = resourceLanguagesFiles;
+            return Path.Combine(Application.streamingAssetsPath, fullpath);
+        }
+        private string GetPoFile(Languages lang)
+        {
+            string file = lang.ToString().Replace("-", "_");
+            string fullpath = resourceLanguagesFiles + file + ".po";
+            return Path.Combine(Application.streamingAssetsPath, fullpath);
+        }
+        #region NOT CHANGE
+        private void LoadFile(Languages lang)
+        {
+            ReadPhase phase = ReadPhase.None;
+            if (lang == defaultLang)
+            {
+                if (textTable != null)
+                    textTable.Clear();
+                language = defaultLang;
+                phase = ReadPhase.None;
+                initialized = true;
+                return;
+            }
+            if (Array.IndexOf<Languages>(avariableLanguages, lang) >= 0 && lang != defaultLang)
+            {
+                //possui o arquivo, e não é a linguagem padrão então TRADUZIR
+                initialized = false;// INDICA que não completou a tradução
+                string fullpath = GetPoFile(lang);
+                string textAsset = File.ReadAllText(fullpath, System.Text.Encoding.UTF8);
+                if (textAsset != null)
+                {
+                    //Debug.LogWarning("[LanguageManager] loading: " + fullpath);
+                    if (textTable == null)
+                    {
+                        textTable = new Dictionary<string, string[]>();
+                    }
+                    textTable.Clear();
+                    StringReader reader = new StringReader(textAsset);
+                    string key = null;
+                    string plural = null;
+                    string val = null;
+                    int number = 0;
+                    string[] valp = new string[1];
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        //Debug.Log("Linha: " + line);
+                        if (line.StartsWith("\"Plural-Forms: nplurals="))
+                        {
+                            nplural = System.Int32.Parse(line.Substring(line.IndexOf("nplurals=") + 9, line.IndexOf(";") - (line.IndexOf("nplurals=") + 9)));
+                            fplural = line.Substring(line.IndexOf("plural=") + 7, line.IndexOf(";", line.IndexOf("plural=")) - (line.IndexOf("plural=") + 7));
+
+                        }
+                        else if (line.StartsWith("\""))
+                        {
+                            // é continuação do texto
+                            //Debug.Log("Continuação: " + line);
+                            if (phase != ReadPhase.None)
+                                switch (phase)
+                                {
+                                    case ReadPhase.Singular:
+                                        key += line.Substring(1, line.Length - 2);
+                                        break;
+                                    case ReadPhase.Plural:
+                                        plural += line.Substring(1, line.Length - 2);
+                                        break;
+                                    case ReadPhase.TSingular:
+                                        val += line.Substring(1, line.Length - 2);
+                                        break;
+                                    case ReadPhase.TPlural:
+                                        valp[number] += line.Substring(1, line.Length - 2);
+                                        break;
+                                    default:
+                                        phase = ReadPhase.None;
+                                        break;
+                                }
+                        }
+                        else if (line.StartsWith("msgid \""))
+                        {
+                            phase = ReadPhase.Singular;
+                            key = line.Substring(7, line.Length - 8);
+                            //Debug.Log("Key: "+key);
+                        }
+                        else if (line.StartsWith("msgid_plural \""))
+                        {
+                            phase = ReadPhase.Plural;
+                            plural = line.Substring(14, line.Length - 15);
+                            //Debug.Log("Achei o plural: "+plural);
+                        }
+                        else if (line.StartsWith("msgstr \""))
+                        {
+                            phase = ReadPhase.TSingular;
+                            val = line.Substring(8, line.Length - 9);
+                            //Debug.Log("Valor: "+val);
+                        }
+                        else if (line.StartsWith("msgstr["))
+                        {
+                            phase = ReadPhase.TPlural;
+
+                            string sub = line.Substring(7, 1);
+                            if (System.Int32.TryParse(sub.Trim(), out number))
+                            {
+                                if (valp == null)
+                                {
+                                    valp = new string[nplural];
+                                    valp[number] = line.Substring(line.IndexOf("\"") + 1, line.Length - (line.IndexOf("\"") + 2));
+                                }
+                                else
+                                {
+                                    valp[number] = line.Substring(line.IndexOf("\"") + 1, line.Length - (line.IndexOf("\"") + 2));
+                                }
+                            }
+                        }
+                        else
+                        {
+                            AddLocation(key, val, plural, valp);
+                            plural = key = val = null;
+                            valp = null;
+                        }
+                    }
+                    AddLocation(key, val, plural, valp);
+                    reader.Close();
+                }
+                else
+                {
+                    Debug.LogWarning("[LanguageManager] " + fullpath + " file not found.");
+
+                    return;
+                }
+                initialized = true;
+            }
+
+        }
+        private void AddLocation(string key, string val = null, string plural = null, string[] valp = null)
+        {
+            if (key != null && val != null)
+            {
+                if (key != "" && !textTable.ContainsKey(key))
+                {
+                    string[] myval = new string[1];
+                    myval[0] = val;
+                    textTable.Add(key, myval);
+                }
+            }
+
+            if (key != null && plural != null && valp.Length > 1)
+            {
+                if (plural != "" && !textTable.ContainsKey(plural))
+                {
+                    string[] myval = new string[1];
+                    myval[0] = valp[0];
+                    textTable.Add(key, myval);
+                    textTable.Add(plural, valp);
+                }
+            }
+        }
+        private static int PluralForm(float n, string form)
+        {
+            int plural = 0;
+            switch (form)
+            {
+                case "0":
+                    return 0;
+                case "(n > 1)":
+                    return plural = (n > 1) ? 1 : 0;
+                case "(n != 1)":
+                    return plural = (n != 1) ? 1 : 0;
+                case "(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5)":
+                    return plural = (n == 0) ? 0 : (n == 1) ? 1 : (n == 2) ? 2 : (n % 100 >= 3 && n % 100 <= 10) ? 3 : (n % 100 >= 11) ? 4 : 5;
+                case "(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)":
+                    return plural = (n % 10 == 1 && n % 100 != 11) ? 0 : (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) ? 1 : 2;
+                case "(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2":
+                    return plural = (n == 1) ? 0 : (n >= 2 && n <= 4) ? 1 : 2;
+                case "(n==1) ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2":
+                    return plural = (n == 1) ? 0 : (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) ? 1 : 2;
+                case "(n==1) ? 0 : (n==2) ? 1 : (n != 8 && n != 11) ? 2 : 3":
+                    return plural = (n == 1) ? 0 : (n == 2) ? 1 : (n != 8 && n != 11) ? 2 : 3;
+                case "n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :(n>6 && n<11) ? 3 : 4":
+                    return plural = (n == 1) ? 0 : (n == 2) ? 1 : (n > 2 && n < 7) ? 2 : (n > 6 && n < 11) ? 3 : 4;
+                case "(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : (n > 2 && n < 20) ? 2 : 3":
+                    return plural = (n == 1 || n == 11) ? 0 : (n == 2 || n == 12) ? 1 : (n > 2 && n < 20) ? 2 : 3;
+                case "(n%10!=1 || n%100==11)":
+                    return plural = (n % 10 != 1 || n % 100 == 11) ? 1 : 0;
+                case "(n==1) ? 0 : (n==2) ? 1 : (n == 3) ? 2 : 3":
+                    return plural = (n == 1) ? 0 : (n == 2) ? 1 : (n == 3) ? 2 : 3;
+                case "(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2)":
+                    return plural = (n % 10 == 1 && n % 100 != 11) ? 0 : (n % 10 >= 2 && (n % 100 < 10 || n % 100 >= 20)) ? 1 : 2;
+                case "(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2)":
+                    return plural = (n % 10 == 1 && n % 100 != 11) ? 0 : (n != 0) ? 1 : 2;
+                case "n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2":
+                    return plural = (n % 10 == 1 && n % 100 != 11) ? 0 : (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) ? 1 : 2;
+                case "n==1 || n%10==1 ? 0 : 1":
+                    return plural = (n == 1 || n % 10 == 1) ? 0 : 1;
+                case "(n==0 ? 0 : n==1 ? 1 : 2)":
+                    return plural = (n == 0) ? 0 : (n == 1) ? 1 : 2;
+                case "(n==1 ? 0 : n==0 || ( n%100>1 && n%100<11) ? 1 : (n%100>10 && n%100<20 ) ? 2 : 3)":
+                    return plural = (n == 1) ? 0 : (n == 0 || (n % 100 > 1 && n % 100 < 11)) ? 1 : (n % 100 > 10 && n % 100 < 20) ? 2 : 3;
+                case "(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)":
+                    return plural = (n == 1) ? 0 : (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) ? 1 : 2;
+                case "(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2)":
+                    return plural = (n == 1) ? 0 : (n == 0 || (n % 100 > 0 && n % 100 < 20)) ? 1 : 2;
+                case "(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3)":
+                    return plural = (n % 100 == 1) ? 0 : (n % 100 == 2) ? 1 : (n % 100 == 3 || n % 100 == 4) ? 2 : 3;
+                default:
+                    return plural;
+            }
+        }
+
+        #endregion
+    }
+
+
+}
