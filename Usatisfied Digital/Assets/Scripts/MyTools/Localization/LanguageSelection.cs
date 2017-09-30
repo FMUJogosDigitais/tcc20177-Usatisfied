@@ -1,16 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System;
 
-namespace MyTools.Localization
+namespace Utils.Localization
 {
-    [RequireComponent(typeof(Canvas))]
     public class LanguageSelection : MonoBehaviour
     {
-
         public bool startConfiguration;
         public Transform myContent;
         public GameObject myLanguageButton;
@@ -39,14 +34,12 @@ namespace MyTools.Localization
         private void SetButton(GameObject go, LocalizationManager.Languages lng)
         {
             GameObject btn = Instantiate<GameObject>(go, myContent);
-            btn.name = lng.ToString();
-            btn.GetComponentInChildren<Text>().text = LocalizationManager.GetLanguageName(lng);
-            btn.GetComponent<Image>().sprite = LocalizationManager.GetLanguageFlag(lng);
             LanguageChangeButton lbuton = btn.GetComponent<LanguageChangeButton>();
             if (lbuton)
             {
                 lbuton.languages = lng;
-                lbuton.SetInitialText(btn.GetComponentInChildren<Text>().text);
+                //Debug.Log(LocalizationManager.GetLanguageName(lng));
+                lbuton.SetInitialText(LocalizationManager.GetLanguageName(lng));
             }
         }
         public void SetNewLanguage()

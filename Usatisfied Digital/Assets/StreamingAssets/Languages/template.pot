@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Usatisfied\n"
-"POT-Creation-Date: 2017-08-27 13:48-0300\n"
+"POT-Creation-Date: 2017-09-09 12:11-0300\n"
 "PO-Revision-Date: 2017-06-08 12:48-0300\n"
 "Last-Translator: \n"
 "Language-Team: Immersive Games <immersivegames.com.br>\n"
@@ -36,9 +36,17 @@ msgid "Spanish"
 msgstr ""
 
 #: MyTools/Localization/ForPoEdit.cs:12
-msgid "English(United States)"
+msgid "English (United States)"
 msgstr ""
 
 #: MyTools/Localization/ForPoEdit.cs:13
-msgid "Portuguese(Brazil)"
+msgid "Portuguese (Brazil)"
+msgstr ""
+
+#: MyTools/Localization/ForPoEdit.cs:14
+msgid "OK"
+msgstr ""
+
+#: MyTools/Localization/ForPoEdit.cs:15
+msgid "Apple"
 msgstr ""

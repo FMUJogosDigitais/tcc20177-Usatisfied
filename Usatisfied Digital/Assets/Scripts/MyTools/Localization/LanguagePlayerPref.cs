@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MyTools.Localization
+namespace Utils.Localization
 {
     public class LanguagePlayerPref : IDontDestroy<LanguagePlayerPref>
     {

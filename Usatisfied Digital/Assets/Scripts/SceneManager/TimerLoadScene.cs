@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-using MyTools.Localization;
+using Utils.Localization;
 
 public class TimerLoadScene : MonoBehaviour {
 
@@ -12,7 +12,6 @@ public class TimerLoadScene : MonoBehaviour {
 
     private void OnEnable()
     {
-        //LanguagePlayerPref.ResetPlayerLanguage();
         SetInitialReferences();
     }
     void SetInitialReferences()

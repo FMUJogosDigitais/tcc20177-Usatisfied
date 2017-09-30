@@ -5,12 +5,15 @@ using System.Globalization;
 using System.IO;
 using UnityEngine;
 
-namespace MyTools.Localization
+namespace Utils.Localization
 {
+    /// <summary>
+    /// Opera a tradução dos componentes
+    /// TODO: Testar o plural como array!
+    /// </summary>
     public class LocalizationManager : IDontDestroy<LocalizationManager>
     {
-
-        public enum Languages { en_US, pt_BR, fr, es } // 
+        public enum Languages { en_US, pt_BR, es_ES }
         public static Languages defaultLang = Languages.en_US;
         public static Languages language = Languages.en_US;
 
@@ -35,7 +38,7 @@ namespace MyTools.Localization
         {
             base.Awake();
             avariableLanguages = GetAvailableLanguages();
-            language = (LanguagePlayerPref.IsSetPlayerLanguage()) ?LanguagePlayerPref.GetSetPlayerLanguage():defaultLang;
+            language = (LanguagePlayerPref.IsSetPlayerLanguage()) ? LanguagePlayerPref.GetSetPlayerLanguage() : defaultLang;
         }
         public void ChangeLanguage(Languages lng)
         {
@@ -50,39 +53,47 @@ namespace MyTools.Localization
         public static void SetNewLanguage(Languages lng)
         {
             language = lng;
-            LanguagePlayerPref.SetPlayerLanguage(lng);
+#if UNITY_STANDALONE && !UNITY_EDITOR
+                LanguagePlayerPref.SetPlayerLanguage(lng);
+#endif
         }
         public static string GetText(string key)
         {
             string result = key;
+            //Debug.Log(result);
+            //Debug.Log(language);
             if (key != null && textTable != null)
             {
                 if (textTable.ContainsKey(key))
                 {
                     result = (string)textTable[key][0];
-
+                    //Debug.Log("Key: "+ key);
                 }
             }
             return (string)result;
         }
-        public static string GetText(string key, string plural, float val)
+        public static string GetText(string key, string[] plural, float val)
         {
+            //Debug.Log(key);
             string result = "0";
             int aplural = PluralForm(val, fplural);
-            if (aplural > 0)
+            //Debug.Log(aplural);
+            if (aplural > 0 && plural.Length > aplural)
             {
-                result = plural;
-                if (plural != null && textTable != null)
+                result = plural[aplural];
+                if (textTable != null)
                 {
-                    if (textTable.ContainsKey(plural) && textTable[plural][aplural] != null)
+                    ;
+                    if (textTable.ContainsKey(plural[aplural]))
                     {
-                        result = (string)textTable[plural][aplural];
-
+                        Debug.Log((string)textTable[plural[aplural]][aplural]);
+                        result = (string)textTable[plural[aplural]][aplural];
                     }
                 }
             }
             else
             {
+                //Debug.Log(key);
                 result = GetText(key);
             }
 
@@ -114,10 +125,12 @@ namespace MyTools.Localization
         public static Sprite GetLanguageFlag(Languages lng)
         {
             string newlng = lng.ToString().Replace("_", "-");
+            //Debug.Log(newlng);
             CultureInfo newCulture = new CultureInfo(newlng);
+            //Debug.Log(newCulture.DisplayName);
             newlng = (newCulture.Name.Length > 3) ? newCulture.Name.Substring(newCulture.Name.Length - 2) : newCulture.Name;
             newlng.ToLower();
-
+            //Debug.Log(resourceFlagsFiles + newlng);
             return Resources.Load<Sprite>(resourceFlagsFiles + newlng);
         }
         public static string GetLanguageName(Languages lng)
@@ -155,7 +168,9 @@ namespace MyTools.Localization
                 //possui o arquivo, e não é a linguagem padrão então TRADUZIR
                 initialized = false;// INDICA que não completou a tradução
                 string fullpath = GetPoFile(lang);
+                //Debug.Log(fullpath);
                 string textAsset = File.ReadAllText(fullpath, System.Text.Encoding.UTF8);
+                //Debug.Log(textAsset);
                 if (textAsset != null)
                 {
                     //Debug.LogWarning("[LanguageManager] loading: " + fullpath);
@@ -225,18 +240,22 @@ namespace MyTools.Localization
                         else if (line.StartsWith("msgstr["))
                         {
                             phase = ReadPhase.TPlural;
-
                             string sub = line.Substring(7, 1);
                             if (System.Int32.TryParse(sub.Trim(), out number))
                             {
                                 if (valp == null)
                                 {
+                                    //Debug.Log("Valp é nulo: "+ nplural);
                                     valp = new string[nplural];
+                                    //Debug.Log("guarda no numero: " + number);
                                     valp[number] = line.Substring(line.IndexOf("\"") + 1, line.Length - (line.IndexOf("\"") + 2));
+                                    // Debug.Log("No numero: " + number + " tem o valor: "+ valp[number]);
                                 }
                                 else
                                 {
+                                    // Debug.Log("Valp NAO nulo");
                                     valp[number] = line.Substring(line.IndexOf("\"") + 1, line.Length - (line.IndexOf("\"") + 2));
+                                    // Debug.Log("No numero: " + number + " tem o valor: " + valp[number]);
                                 }
                             }
                         }
@@ -253,7 +272,6 @@ namespace MyTools.Localization
                 else
                 {
                     Debug.LogWarning("[LanguageManager] " + fullpath + " file not found.");
-
                     return;
                 }
                 initialized = true;
@@ -262,6 +280,7 @@ namespace MyTools.Localization
         }
         private void AddLocation(string key, string val = null, string plural = null, string[] valp = null)
         {
+            //Debug.Log("Key: " + key + " Value: "+ val);
             if (key != null && val != null)
             {
                 if (key != "" && !textTable.ContainsKey(key))
@@ -269,6 +288,7 @@ namespace MyTools.Localization
                     string[] myval = new string[1];
                     myval[0] = val;
                     textTable.Add(key, myval);
+                    //Debug.Log("Key: " + key + " Value: " + val);
                 }
             }
 
@@ -334,9 +354,6 @@ namespace MyTools.Localization
                     return plural;
             }
         }
-
         #endregion
     }
-
-
 }

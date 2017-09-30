@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Usatisfied\n"
-"POT-Creation-Date: 2017-08-27 13:51-0300\n"
-"PO-Revision-Date: 2017-08-27 13:51-0300\n"
+"POT-Creation-Date: 2017-09-09 12:10-0300\n"
+"PO-Revision-Date: 2017-09-09 12:10-0300\n"
 "Last-Translator: \n"
 "Language-Team: Immersive Games <immersivegames.com.br>\n"
 "Language: pt_BR\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: MyTools/Localization/ForPoEdit.cs:8
 msgid "Choose your language!"
-msgstr "Escolha a sua lingua"
+msgstr "Escolha a sua lingua!"
 
 #: MyTools/Localization/ForPoEdit.cs:9
 msgid "English"
@@ -41,3 +41,11 @@ msgstr "Inglês (Estados Unidos)"
 #: MyTools/Localization/ForPoEdit.cs:13
 msgid "Portuguese (Brazil)"
 msgstr "Português (Brasil)"
+
+#: MyTools/Localization/ForPoEdit.cs:14
+msgid "OK"
+msgstr "OK"
+
+#: MyTools/Localization/ForPoEdit.cs:15
+msgid "Apple"
+msgstr "Maçã"

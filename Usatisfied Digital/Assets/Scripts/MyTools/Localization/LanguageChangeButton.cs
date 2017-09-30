@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MyTools.Localization
+namespace Utils.Localization
 {
     [RequireComponent(typeof(Button))]
     public class LanguageChangeButton : MonoBehaviour
     {
-
+        public Image iconFlag;
         public LocalizationManager.Languages languages;
         private LocalizationManager localizeManager;
         private string textLocalize;
@@ -34,6 +34,9 @@ namespace MyTools.Localization
         {
             OnChangeLanguage(localizeManager);
             Button btn = GetComponent<Button>();
+            btn.name = languages.ToString();
+            btn.GetComponentInChildren<Text>().text = LocalizationManager.GetLanguageName(languages);
+            iconFlag.sprite = LocalizationManager.GetLanguageFlag(languages);
             btn.onClick.AddListener(() => localizeManager.ChangeLanguage(languages));
         }
         void OnChangeLanguage(LocalizationManager lang)

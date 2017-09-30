@@ -1,16 +1,17 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
-
-namespace MyTools.Localization
+namespace Utils.Localization
 {
     public class LanguageText : MonoBehaviour
     {
-
-        public string deafultPlural;
-        public float qntPlural;
+        public enum FormatOutput { None, LowerCase, Uppercase, FirstUpper}
+        public FormatOutput formatOutput;
+        public string[] deafultPlural;
+        public float qntPlural =1;
         private string textLocalize;
         private LocalizationManager localizationManager;
 
@@ -36,14 +37,21 @@ namespace MyTools.Localization
         }
         void OnChangeLanguage(LocalizationManager lang)
         {
-            if (deafultPlural != null && deafultPlural != "") {
-                GetComponent<Text>().text = LocalizationManager.GetText(textLocalize);
-            }
-            else
+            //Debug.Log(LocalizationManager.GetText(textLocalize, deafultPlural, qntPlural));
+            GetComponent<Text>().text = LocalizationManager.GetText(textLocalize, deafultPlural, qntPlural);
+
+            switch (formatOutput)
             {
-                GetComponent<Text>().text = LocalizationManager.GetText(textLocalize, deafultPlural, qntPlural);
+                case FormatOutput.FirstUpper:
+                    GetComponent<Text>().text = GetComponent<Text>().text.First().ToString().ToUpper() + GetComponent<Text>().text.Substring(1);
+                    break;
+                case FormatOutput.LowerCase:
+                    GetComponent<Text>().text = GetComponent<Text>().text.ToLower();
+                    break;
+                case FormatOutput.Uppercase:
+                    GetComponent<Text>().text = GetComponent<Text>().text.ToUpper();
+                    break;
             }
-            
         }
     }
 }

@@ -12,6 +12,7 @@ public class ForPoedit : MonoBehaviour
         GetText("English (United States)");
         GetText("Portuguese (Brazil)");
         GetText("OK");
+        GetText("Apple");
     }
     #region DUMMY FUNCTIONS
     private void GetText(string dummy) { }

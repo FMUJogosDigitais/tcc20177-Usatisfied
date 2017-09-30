@@ -13,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - teste
   - 
   - 
   - 
@@ -38,6 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1360689205
+    locked: 0
+  - name: Animacao Principal
+    uniqueID: 3873827731
+    locked: 0
+  - name: Forward
+    uniqueID: 2430101003
+    locked: 0
+  - name: Foeward2
+    uniqueID: 1027732799
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
