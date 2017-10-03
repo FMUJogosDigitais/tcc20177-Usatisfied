@@ -1,0 +1,606 @@
+fileFormatVersion: 2
+guid: 890b6cce014ae134e9b6b5c56346a4c1
+timeCreated: 1506801399
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: cobertor
+    21300002: cadeira trabalho
+    21300004: mesa trabalho
+    21300006: painel diversao
+    21300008: cama
+    21300010: sofa diversao
+    21300012: psicologo
+    21300014: diva
+    21300016: cadeira alimentacao
+    21300018: mesa alimentacao
+    21300020: brilho tv e pc
+    21300022: balao conversa
+    21300024: '!'
+    21300026: '@'
+    21300028: '#'
+    21300030: $
+    21300032: objetos de interacao_16
+    21300034: '&'
+    21300036: '-'
+    21300038: Zzz
+    21300040: objetos de interacao_20
+    21300042: controle game
+    21300044: copo trabalho
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 170
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: cobertor
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 609
+        width: 226
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -113, y: 41}
+        - {x: -113, y: -41}
+        - {x: 113, y: -41}
+        - {x: 113, y: 35}
+        - {x: 59, y: 41}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cadeira trabalho
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 431
+        width: 114
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 57, y: -92.5}
+        - {x: 57, y: 34.5}
+        - {x: -43, y: 94.5}
+        - {x: -57, y: 94.5}
+        - {x: -57, y: -94.5}
+        - {x: -17, y: -94.5}
+        - {x: -11, y: -90.5}
+        - {x: -1, y: -94.5}
+        - {x: 50, y: -94.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mesa trabalho
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 431
+        width: 151
+        height: 209
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 60.5, y: 104.5}
+        - {x: 12.5, y: 104.5}
+        - {x: -75.5, y: 41.5}
+        - {x: -75.5, y: 8.5}
+        - {x: -74.5, y: 7.5}
+        - {x: -27.5, y: -104.5}
+        - {x: 75.5, y: -104.5}
+        - {x: 75.5, y: 96.5}
+        - {x: 61.5, y: 97.5}
+      - - {x: 15.5, y: 64.5}
+        - {x: -5.5, y: 64.5}
+        - {x: -7.5, y: 63.5}
+        - {x: -7.5, y: 55.5}
+        - {x: -5.5, y: 43.5}
+        - {x: -1.5, y: 41.5}
+        - {x: 11.5, y: 41.5}
+        - {x: 15.5, y: 49.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: painel diversao
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 398
+        width: 67
+        height: 286
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8.5, y: 143}
+        - {x: -33.5, y: 32}
+        - {x: -33.5, y: -110}
+        - {x: -12.5, y: -143}
+        - {x: 33.5, y: -143}
+        - {x: 33.5, y: 143}
+      - - {x: -23.5, y: 18}
+        - {x: -33.5, y: 13}
+        - {x: -33.5, y: -17}
+        - {x: -26.5, y: -17}
+        - {x: -21.5, y: -15}
+        - {x: -8.5, y: 1}
+        - {x: -8.5, y: 11}
+        - {x: -11.5, y: 18}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cama
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 431
+        width: 293
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 116.5, y: 86}
+        - {x: -146.5, y: 16}
+        - {x: -146.5, y: -86}
+        - {x: 146.5, y: -86}
+        - {x: 146.5, y: 86}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sofa diversao
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 387
+        width: 172
+        height: 195
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -86, y: 97.5}
+        - {x: -86, y: 43.5}
+        - {x: -53, y: -88.5}
+        - {x: -45, y: -97.5}
+        - {x: 86, y: -97.5}
+        - {x: 86, y: 27.5}
+        - {x: -49, y: 97.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: psicologo
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 216
+        width: 170
+        height: 215
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 23, y: 107.5}
+        - {x: -66, y: 107.5}
+        - {x: -85, y: 77.5}
+        - {x: -85, y: -52.5}
+        - {x: -63, y: -107.5}
+        - {x: 76, y: -107.5}
+        - {x: 85, y: -56.5}
+        - {x: 85, y: 74.5}
+        - {x: 75, y: 84.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: diva
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 226
+        width: 293
+        height: 126
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 78.5, y: 63}
+        - {x: -138.5, y: 9}
+        - {x: -146.5, y: -12}
+        - {x: -146.5, y: -61}
+        - {x: -144.5, y: -63}
+        - {x: 146.5, y: -63}
+        - {x: 146.5, y: 63}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cadeira alimentacao
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 151
+        width: 95
+        height: 191
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12.5, y: 1.5}
+        - {x: -32.5, y: 95.5}
+        - {x: -47.5, y: 95.5}
+        - {x: -47.5, y: -95.5}
+        - {x: 47.5, y: -95.5}
+        - {x: 47.5, y: -1.5}
+        - {x: 46.5, y: -1.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mesa alimentacao
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 148
+        width: 175
+        height: 218
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33.5, y: 109}
+        - {x: -87.5, y: 53}
+        - {x: -87.5, y: 29}
+        - {x: -86.5, y: 28}
+        - {x: -33.5, y: -109}
+        - {x: 87.5, y: -109}
+        - {x: 87.5, y: 109}
+      - - {x: -35.5, y: 30}
+        - {x: -32.5, y: 29}
+        - {x: -31.5, y: 28}
+        - {x: -31.5, y: 29}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: brilho tv e pc
+      rect:
+        serializedVersion: 2
+        x: 26.999998
+        y: 0
+        width: 79
+        height: 188
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4867021}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 34.5, y: 64.5}
+        - {x: -20.5, y: 91.5}
+        - {x: -34.5, y: 91.5}
+        - {x: -34.5, y: -91.5}
+        - {x: -22.5, y: -91.5}
+        - {x: -5.5, y: -86.5}
+        - {x: 25.5, y: -73.5}
+        - {x: 34.5, y: -69.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: balao conversa
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 28
+        width: 246
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 111, y: 63.5}
+        - {x: -89, y: 63.5}
+        - {x: -123, y: 50.5}
+        - {x: -123, y: -63.5}
+        - {x: 118, y: -63.5}
+        - {x: 123, y: -55.5}
+        - {x: 123, y: 32.5}
+        - {x: 114, y: 61.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: '!'
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 61
+        width: 5
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -2.5, y: 8.5}
+        - {x: -2.5, y: -8.5}
+        - {x: 2.5, y: -8.5}
+        - {x: 2.5, y: 8.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: '@'
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 46
+        width: 28
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 15.5}
+        - {x: -14, y: -14.5}
+        - {x: -13, y: -15.5}
+        - {x: 13, y: -15.5}
+        - {x: 14, y: -10.5}
+        - {x: 14, y: 15.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: '#'
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 53
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5.5, y: 12.5}
+        - {x: -9.5, y: 6.5}
+        - {x: -9.5, y: -10.5}
+        - {x: -8.5, y: -12.5}
+        - {x: 5.5, y: -12.5}
+        - {x: 9.5, y: -7.5}
+        - {x: 9.5, y: 12.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: $
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 50
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -3, y: 16}
+        - {x: -8, y: 10}
+        - {x: -8, y: -14}
+        - {x: -7, y: -16}
+        - {x: 5, y: -16}
+        - {x: 8, y: -15}
+        - {x: 8, y: 12}
+        - {x: 5, y: 16}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: objetos de interacao_16
+      rect:
+        serializedVersion: 2
+        x: 718
+        y: 63
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7.5, y: 7.5}
+        - {x: -7.5, y: -7.5}
+        - {x: 7.5, y: -7.5}
+        - {x: 7.5, y: 6.5}
+        - {x: 6.5, y: 7.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: '&'
+      rect:
+        serializedVersion: 2
+        x: 758
+        y: 53
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10.5, y: 12.5}
+        - {x: -10.5, y: -10.5}
+        - {x: -8.5, y: -12.5}
+        - {x: 10.5, y: -12.5}
+        - {x: 10.5, y: 7.5}
+        - {x: 6.5, y: 12.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: '-'
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 59
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7, y: 4}
+        - {x: -7, y: -1}
+        - {x: 0, y: -4}
+        - {x: 7, y: -4}
+        - {x: 7, y: 4}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Zzz
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 36
+        width: 55
+        height: 60
+      alignment: 9
+      pivot: {x: 0.49999997, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22.5, y: 25}
+        - {x: -22.5, y: -25}
+        - {x: 22.5, y: -25}
+        - {x: 22.5, y: 25}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: objetos de interacao_20
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 53
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -3, y: 3}
+        - {x: -3, y: -3}
+        - {x: 3, y: -3}
+        - {x: 3, y: 3}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: copo trabalho
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 622
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11.5, y: 11.5}
+        - {x: -11.5, y: 2.5}
+        - {x: -9.5, y: -9.5}
+        - {x: -8.5, y: -11.5}
+        - {x: 9.5, y: -11.5}
+        - {x: 11.5, y: -10.5}
+        - {x: 11.5, y: 11.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: controle game
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 610
+        width: 36
+        height: 45
+      alignment: 9
+      pivot: {x: 0.47222224, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 98748395270852
+  assetBundleName: 
+  assetBundleVariant: 

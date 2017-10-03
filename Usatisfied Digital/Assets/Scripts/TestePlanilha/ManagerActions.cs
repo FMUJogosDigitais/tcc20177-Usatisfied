@@ -8,7 +8,6 @@ public class ManagerActions : IDontDestroy<ManagerActions> {
 
     private void Start()
     {
-        ResiliencesPerHour();
         TotalResiliencesbyDay();
     }
 
@@ -17,25 +16,14 @@ public class ManagerActions : IDontDestroy<ManagerActions> {
         //ResiliencesPerHour();
     }
 
-    public void ResiliencesPerHour()
-    {
-        foreach (ModelActions action in actions)
-        {
-            action.fisicoHourAction = action.fisicoMulti * BasePontuacao.GetInstance().fisicoPhour;
-            action.mentalHourAction = action.mentalMulti * BasePontuacao.GetInstance().mentalPhour;
-            action.emocionalHourAction = action.emocionalMulti * BasePontuacao.GetInstance().emocionalPhour;
-            action.socialHourAction = action.socialMulti * BasePontuacao.GetInstance().socialPhour;
-        }
-    }
-
     public void TotalResiliencesbyDay()
     {
         foreach (ModelActions action in actions)
         {
-            action.fisicoOnDay = action.fisicoHourAction * action.duration;
-            action.mentalOnDay = action.mentalHourAction * action.duration;
-            action.emocionalOnDay = action.emocionalHourAction * action.duration;
-            action.socialOnDay = action.socialHourAction * action.duration;
+            action.physic = (action.fisicoMulti * BasePontuacao.GetInstance().fisicoPhour) * action.duration;
+            action.mental = (action.mentalMulti * BasePontuacao.GetInstance().mentalPhour) * action.duration;
+            action.emotional = (action.emocionalMulti * BasePontuacao.GetInstance().emocionalPhour) * action.duration;
+            action.social = (action.socialMulti * BasePontuacao.GetInstance().socialPhour) * action.duration;
         }
     }
 }

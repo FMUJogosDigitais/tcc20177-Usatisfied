@@ -5,15 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/ImmersiveLogo.unity
     guid: 261675d132df5634fbf1d282ce6bcbf2
-  - enabled: 1
+  - enabled: 0
     path: Assets/LanguageSelection.unity
     guid: b29812ff9ed5d3e48a43ac77bb591e7d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Menu.unity
     guid: 09b98d769c889ab4b830655df3c1a285
-  - enabled: 1
+  - enabled: 0
     path: Assets/principal.unity
     guid: a022ebae8d4dbe64bb87b418188cd153
+  - enabled: 1
+    path: Assets/personagem animacao.unity
+    guid: 5ad2f28ca1f2a6a4c84417dd0d476fcd

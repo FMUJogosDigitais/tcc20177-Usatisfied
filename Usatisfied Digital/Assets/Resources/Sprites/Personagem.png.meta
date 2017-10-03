@@ -1,0 +1,323 @@
+fileFormatVersion: 2
+guid: 62e5e1f92b8b234468a2bc7ec758a183
+timeCreated: 1506802673
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: braco tras
+    21300002: rabo de cavalo
+    21300004: corpo principal
+    21300006: dedao tras
+    21300008: braco frente
+    21300010: rosto raiva
+    21300012: dedao frente
+    21300014: perna tras
+    21300016: colher
+    21300018: olho normal
+    21300020: boca ronco
+    21300022: boca aberta
+    21300024: boca feliz
+    21300026: boca normal
+    21300028: olho fechado
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 150
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: braco tras
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 148.45415
+        width: 32.091976
+        height: 93.54585
+      alignment: 9
+      pivot: {x: 0.4362461, y: 0.5242975}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: rabo de cavalo
+      rect:
+        serializedVersion: 2
+        x: 21.363937
+        y: 176.6258
+        width: 29.357319
+        height: 44.972473
+      alignment: 9
+      pivot: {x: 0.51558053, y: 0.51974475}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: corpo principal
+      rect:
+        serializedVersion: 2
+        x: 78.38005
+        y: 0
+        width: 69.61995
+        height: 240.7447
+      alignment: 9
+      pivot: {x: 0.53317976, y: 0.49222267}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dedao tras
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 161
+        width: 20
+        height: 19
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: braco frente
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 62.09368
+        width: 32.31056
+        height: 97.634514
+      alignment: 9
+      pivot: {x: 0.44876972, y: 0.5009122}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: rosto raiva
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 122.99999
+        width: 49
+        height: 41.000008
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5000001}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dedao frente
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 74
+        width: 20
+        height: 18
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: perna tras
+      rect:
+        serializedVersion: 2
+        x: 35.565662
+        y: 0
+        width: 53.172733
+        height: 129.82422
+      alignment: 9
+      pivot: {x: 0.49714082, y: 0.47756884}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: colher
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 56
+        width: 10
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: olho normal
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 30
+        width: 19
+        height: 21
+      alignment: 9
+      pivot: {x: 0.42105263, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: boca ronco
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 24
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: boca aberta
+      rect:
+        serializedVersion: 2
+        x: 6.999999
+        y: 19
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.50000006, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: boca feliz
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 12
+        width: 11
+        height: 14
+      alignment: 9
+      pivot: {x: 0.3181818, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: boca normal
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 10.999999
+        width: 15
+        height: 14.000001
+      alignment: 9
+      pivot: {x: 0.5, y: 0.50000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: olho fechado
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 20
+        height: 17
+      alignment: 9
+      pivot: {x: 0.375, y: 0.3529412}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 98749733931035
+  assetBundleName: 
+  assetBundleVariant: 

@@ -14,6 +14,7 @@ using Utils.Localization;
 /// Name: Renato Innocenti           Date:05/21/2017        Description: v1.0
 /// Name: Renato Innocenti           Date:05/21/2017        Description: v1.0.1 - Skip Load if alradey done
 /// Name: Renato Innocenti           Date:08/26/2017        Description: v1.1 - Call by another Scripts
+/// Name: Renato Innocenti           Date:09/30/2017        Description: v1.1.1 - Fixed Jump Scenes
 /// </summary>
 ///
 public class LoadSceneManager : IDontDestroy<LoadSceneManager>
@@ -36,9 +37,11 @@ public class LoadSceneManager : IDontDestroy<LoadSceneManager>
     private AsyncOperation async;
     enum Fade { In, Out };
     #endregion
+
     public void LoadScene(int idScene, float time = 0)
     {
-        if ((SceneManager.sceneCountInBuildSettings -1) >= idScene)
+        //Debug.Log(SceneManager.sceneCountInBuildSettings);
+        if (SceneManager.sceneCountInBuildSettings > idScene)
         {
             StartCoroutine(LoadingScreen(idScene, time));
         }
@@ -53,7 +56,8 @@ public class LoadSceneManager : IDontDestroy<LoadSceneManager>
             yield return new WaitForSeconds(time);
         async = SceneManager.LoadSceneAsync(idScene);
         async.allowSceneActivation = false;
-
+        if (loadBar.gameObject.activeSelf == false)
+            loadBar.gameObject.SetActive(true);
         FadeOut();
         yield return new WaitForSeconds(fadeTimeOut);
 
@@ -68,12 +72,14 @@ public class LoadSceneManager : IDontDestroy<LoadSceneManager>
                 //loadscreen
                 while (async.isDone == false)
                 {
+
                     loadBar.fillAmount = async.progress;
                     if (async.progress == 0.9f)
                     {
                         loadBar.fillAmount = 1;
                         FadeOut();
                         yield return new WaitForSeconds(fadeTimeOut);
+                        loadBar.gameObject.SetActive(false);
                         loadingScreenObject.SetActive(false);
                         async.allowSceneActivation = true;
                         FadeIn();

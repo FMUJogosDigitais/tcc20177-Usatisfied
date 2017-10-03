@@ -8,6 +8,8 @@ public class BasePontuacao: IDontDestroy<BasePontuacao> {
     public  float mentalPhour = 12;
     public  float emocionalPhour = 22;
     public  float socialPhour = 32;
-    public  float sleppPhour = 10;
+    public  float sleepPhour = 10;
+    public  float stressRecover = 80f;
+    public  float restValue = 0f;
 
 }

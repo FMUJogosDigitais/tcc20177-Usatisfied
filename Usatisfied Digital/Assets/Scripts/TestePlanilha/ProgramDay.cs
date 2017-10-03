@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Usatisfied;
 
 namespace Usatisfied
 {
@@ -30,38 +31,45 @@ public class ProgramDay : MonoBehaviour {
 
     public void Totalduration()
     {
-        int total = listActions.Sum(item => item.duration);
+        float total = listActions.Sum(item => item.duration);
         Debug.Log(total);
         //Checagem de retorno do valor.....
     }
     
 	public void TotalSumResiliencesDay()
     {
-		SatisfactionManager sm = GetComponent<SatisfactionManager> ();
-		
-		// Tratamento da resiliencia "Fisico"
-		float totalfisico = listActions.Sum(item=> item.fisicoOnDay);
+
+        // Tratamento dormir
+        float totalDormir = 24 - listActions.Sum(item => item.duration);
+        float restValue = totalDormir * BasePontuacao.GetInstance().sleepPhour;
+        Debug.Log("dormir: " + totalDormir);        
+
+
+        // Tratamento da resiliencia "Fisico"
+        float totalfisico = listActions.Sum(item=> item.physic);
         Debug.Log("Fisico: "+ totalfisico);
-		sm.TratamentoDeResiliencia (GameManager.Resiliences.Phisycs, totalfisico);
+        PhysicsResController.GetInstance().DealWithResValue(totalfisico, restValue);        
 
 
 		// Tratamento da resiliencia "Mental"
-		float totalMental = listActions.Sum(item => item.mentalOnDay);
+		float totalMental = listActions.Sum(item => item.mental);
         Debug.Log("Mental: " + totalMental);
-		sm.TratamentoDeResiliencia (GameManager.Resiliences.Mental, totalMental);
+        MentalResController.GetInstance().DealWithResValue(totalMental, restValue);
+        
 
-		// Tratamento da resiliencia "Emocional"
-		float totalEmocional = listActions.Sum(item => item.emocionalOnDay);
+        // Tratamento da resiliencia "Emocional"
+        float totalEmocional = listActions.Sum(item => item.emotional);
         Debug.Log("Emocional: " + totalEmocional);
-		sm.TratamentoDeResiliencia (GameManager.Resiliences.Emotional, totalEmocional);
-		
-		// Tratamento da resiliencia "Social"
-		float totalSocial = listActions.Sum(item => item.socialOnDay);
-        Debug.Log("Social: " + totalSocial);
-		// Checa se gerou satisfação
-		sm.TratamentoDeResiliencia (GameManager.Resiliences.Social, totalSocial);
+        EmotionalResController.GetInstance().DealWithResValue(totalEmocional, restValue);
+    
 
-	}
+        // Tratamento da resiliencia "Social"
+        float totalSocial = listActions.Sum(item => item.social);
+        Debug.Log("Social: " + totalSocial);
+        SocialResController.GetInstance().DealWithResValue(totalSocial, restValue);
+
+
+    }
  }
 		
 }

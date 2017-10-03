@@ -35,6 +35,12 @@ namespace Utils.Localization
         {
             OnChangeLanguage(localizationManager);
         }
+
+        public void ChangeInitialReference(string text)
+        {
+            textLocalize = text;
+            OnChangeLanguage(localizationManager);
+        }
         void OnChangeLanguage(LocalizationManager lang)
         {
             //Debug.Log(LocalizationManager.GetText(textLocalize, deafultPlural, qntPlural));

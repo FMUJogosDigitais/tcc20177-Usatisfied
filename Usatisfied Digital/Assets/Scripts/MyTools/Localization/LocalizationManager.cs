@@ -67,10 +67,11 @@ namespace Utils.Localization
                 if (textTable.ContainsKey(key))
                 {
                     result = (string)textTable[key][0];
+
                     //Debug.Log("Key: "+ key);
                 }
             }
-            return (string)result;
+            return (result.Trim() != "") ? (string)result : key;
         }
         public static string GetText(string key, string[] plural, float val)
         {
@@ -86,7 +87,7 @@ namespace Utils.Localization
                     ;
                     if (textTable.ContainsKey(plural[aplural]))
                     {
-                        Debug.Log((string)textTable[plural[aplural]][aplural]);
+                        //Debug.Log((string)textTable[plural[aplural]][aplural]);
                         result = (string)textTable[plural[aplural]][aplural];
                     }
                 }
@@ -97,7 +98,7 @@ namespace Utils.Localization
                 result = GetText(key);
             }
 
-            return (string)result;
+            return (result.Trim() != "") ? (string)result : key;
         }
 
         public static Languages[] GetAvailableLanguages()

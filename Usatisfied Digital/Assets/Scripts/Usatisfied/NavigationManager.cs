@@ -3,79 +3,56 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Usatisfied
-{
+
 
     public class NavigationManager : IDontDestroy<NavigationManager>
     {
+        public GameObject[] panels;
+        /// <summary>
+        /// 0 - index
+        /// 1 - presets
+        /// 2 - edit timeline
+        /// 3 - liderboards
+        /// </summary>
+        ///
 
-        public GameObject actionsPanel;
-        public GameObject timeLinePanel;
-        public GameObject actionSetupPanel;
-        public GameObject presetDisplay;
-
-        void ToogleActionSetupPanel() {
-            actionSetupPanel.SetActive(!actionSetupPanel.activeSelf);
-        }
-        void ToogleActionSetupPanel(bool toogle)
+        private void Start()
         {
-            actionSetupPanel.SetActive(toogle);
-        }
-
-        void TooglePresetDisplay()
-        {
-            presetDisplay.SetActive(!presetDisplay.activeSelf);
-        }
-        void TooglePresetDisplay(bool toogle)
-        {
-            presetDisplay.SetActive(toogle);
+            ToggleIndex();
         }
 
-        void ToogleTimeLinePanel()
+        private void ClearPanels()
         {
-            timeLinePanel.SetActive(!timeLinePanel.activeSelf);
-        }
-        void ToogleTimeLinePanel(bool toogle)
-        {
-            timeLinePanel.SetActive(toogle);
-        }
-        void ToogleActionPanel()
-        {
-            actionsPanel.SetActive(!actionsPanel.activeSelf);
-        }
-        void ToogleActionPanel(bool toogle)
-        {
-            actionsPanel.SetActive(toogle);
+            int i = panels.Length;
+            for (int x = 0; x < i; x++)
+            {
+                panels[x].SetActive(false);
+            }
         }
 
-        // Botões das ações
-        public void NavToActionPanel()
+        void TogglePanel(int idde)
         {
-            ToogleActionSetupPanel(false);
-            TooglePresetDisplay(false);
-            ToogleTimeLinePanel(false);
-            ToogleActionPanel(true);
+            panels[idde].SetActive(true);
         }
-        public void NavToTimeLine()
+
+        void TogglePanel(int[] iddes)
         {
-            ToogleActionSetupPanel(false);
-            TooglePresetDisplay(false);
-            ToogleTimeLinePanel(true);
-            ToogleActionPanel(false);
+            int i = iddes.Length;
+            for (int x = 0; x < i; x++)
+            {
+                panels[x].SetActive(true);
+            }
         }
-        public void NavToPresetDisplay()
+
+        public void ToggleIndex()
         {
-            ToogleActionSetupPanel(true);
-            TooglePresetDisplay(true);
-            ToogleTimeLinePanel(false);
-            ToogleActionPanel(false);
+            ClearPanels();
+            TogglePanel(0);
         }
-        public void NavToActionSetupPanel()
+        public void ToggleEditTimeline()
         {
-            ToogleActionSetupPanel(true);
-            TooglePresetDisplay(true);
-            ToogleTimeLinePanel(false);
-            ToogleActionPanel(false);
+            ClearPanels();
+            TogglePanel(1);
+            TogglePanel(2);
         }
     }
-}

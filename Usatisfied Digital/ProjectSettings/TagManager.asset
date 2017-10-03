@@ -41,6 +41,12 @@ TagManager:
   - name: Background
     uniqueID: 1360689205
     locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: imovel
+    uniqueID: 1200245961
+    locked: 0
   - name: Animacao Principal
     uniqueID: 3873827731
     locked: 0
@@ -49,7 +55,4 @@ TagManager:
     locked: 0
   - name: Foeward2
     uniqueID: 1027732799
-    locked: 0
-  - name: Default
-    uniqueID: 0
     locked: 0
