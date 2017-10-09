@@ -1279,7 +1279,7 @@ GameObject:
   - component: {fileID: 1512975536}
   - component: {fileID: 1512975537}
   m_Layer: 0
-  m_Name: personagem andando e correndo
+  m_Name: Personagem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9346,7 +9346,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 164625226}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.301, y: 2.388, z: 1.58}
+  m_LocalPosition: {x: 0, y: 2.388, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 702144436}
