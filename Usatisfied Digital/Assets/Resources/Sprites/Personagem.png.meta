@@ -27,8 +27,6 @@ TextureImporter:
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
-    mipMapsPreserveCoverage: 0
-    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -44,13 +42,10 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-    serializedVersion: 2
     filterMode: -1
     aniso: -1
     mipBias: -1
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapMode: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -117,7 +112,6 @@ TextureImporter:
       pivot: {x: 0.4362461, y: 0.5242975}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: rabo de cavalo
@@ -131,7 +125,6 @@ TextureImporter:
       pivot: {x: 0.51558053, y: 0.51974475}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: corpo principal
@@ -145,7 +138,6 @@ TextureImporter:
       pivot: {x: 0.53317976, y: 0.49222267}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: dedao tras
@@ -159,7 +151,6 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: braco frente
@@ -173,7 +164,6 @@ TextureImporter:
       pivot: {x: 0.44876972, y: 0.5009122}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: rosto raiva
@@ -187,7 +177,6 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5000001}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: dedao frente
@@ -201,7 +190,6 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: perna tras
@@ -215,21 +203,19 @@ TextureImporter:
       pivot: {x: 0.49714082, y: 0.47756884}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: colher
       rect:
         serializedVersion: 2
-        x: 29
-        y: 56
-        width: 10
-        height: 22
-      alignment: 0
+        x: 24
+        y: 51
+        width: 20
+        height: 32
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: olho normal
@@ -243,21 +229,19 @@ TextureImporter:
       pivot: {x: 0.42105263, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: boca ronco
       rect:
         serializedVersion: 2
-        x: 1
-        y: 24
-        width: 4
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 0
+        y: 19
+        width: 10
+        height: 16
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: boca aberta
@@ -271,7 +255,6 @@ TextureImporter:
       pivot: {x: 0.50000006, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: boca feliz
@@ -285,7 +268,6 @@ TextureImporter:
       pivot: {x: 0.3181818, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: boca normal
@@ -299,7 +281,6 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.50000006}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: olho fechado
@@ -313,10 +294,8 @@ TextureImporter:
       pivot: {x: 0.375, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
       tessellationDetail: 0
     outline: []
-    physicsShape: []
   spritePackingTag: 
   userData: 98749733931035
   assetBundleName: 

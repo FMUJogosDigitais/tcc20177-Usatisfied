@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 890b6cce014ae134e9b6b5c56346a4c1
-timeCreated: 1506801399
+timeCreated: 1507069250
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -27,6 +27,7 @@ TextureImporter:
     21300040: objetos de interacao_20
     21300042: controle game
     21300044: copo trabalho
+    21300046: teclado
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -370,11 +371,11 @@ TextureImporter:
       name: balao conversa
       rect:
         serializedVersion: 2
-        x: 207
-        y: 28
-        width: 246
-        height: 127
-      alignment: 0
+        x: 202
+        y: 23
+        width: 256
+        height: 137
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
@@ -392,11 +393,11 @@ TextureImporter:
       name: '!'
       rect:
         serializedVersion: 2
-        x: 542
-        y: 61
-        width: 5
-        height: 17
-      alignment: 0
+        x: 537
+        y: 56
+        width: 15
+        height: 27
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
@@ -410,12 +411,12 @@ TextureImporter:
       name: '@'
       rect:
         serializedVersion: 2
-        x: 575
-        y: 46
-        width: 28
-        height: 31
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 570
+        y: 41.000004
+        width: 38
+        height: 40.999996
+      alignment: 9
+      pivot: {x: 0.5, y: 0.49999997}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -14, y: 15.5}
@@ -430,11 +431,11 @@ TextureImporter:
       name: '#'
       rect:
         serializedVersion: 2
-        x: 629
-        y: 53
-        width: 19
-        height: 25
-      alignment: 0
+        x: 624
+        y: 48
+        width: 29
+        height: 35
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
@@ -451,11 +452,11 @@ TextureImporter:
       name: $
       rect:
         serializedVersion: 2
-        x: 675
-        y: 50
-        width: 16
-        height: 32
-      alignment: 0
+        x: 670
+        y: 45
+        width: 26
+        height: 42
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
@@ -492,11 +493,11 @@ TextureImporter:
       name: '&'
       rect:
         serializedVersion: 2
-        x: 758
-        y: 53
-        width: 21
-        height: 25
-      alignment: 0
+        x: 753
+        y: 48
+        width: 31
+        height: 35
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
@@ -594,6 +595,20 @@ TextureImporter:
         height: 45
       alignment: 9
       pivot: {x: 0.47222224, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: teclado
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 644
+        width: 71
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

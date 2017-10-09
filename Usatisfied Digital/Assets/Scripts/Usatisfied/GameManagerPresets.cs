@@ -31,5 +31,4 @@ public class GameManagerPresets : MonoBehaviour
             Debug.Log("Precisa adicionar algum templete no Game manager");
         }
     }
-
 }

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 2d68010cc5ad5d847b11efdad9d62c35
-timeCreated: 1505947324
+timeCreated: 1507068722
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -38,6 +38,7 @@ TextureImporter:
     21300062: iconProgram
     21300064: FundoBase2
     21300066: finalSprites_0
+    21300068: play
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -591,6 +592,20 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 25, y: 75, z: 25, w: 75}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: play
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 336
+        width: 83
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0

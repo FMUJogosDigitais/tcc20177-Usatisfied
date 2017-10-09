@@ -6,43 +6,62 @@ using Usatisfied.Navigation;
 
 public class GameManagerTimeline : IDontDestroy<GameManagerTimeline>
 {
-    public float timeProgressInSec = 1f;
+
     public GameObject buttonAction;
     [SerializeField]
     private List<ModelActions> listActionInDay;
-    private float maxHour = 24f * 60; //duracao em minutos
+    public static float maxHour = 24f * 60; //duracao em minutos
+    public Text dayDurationText;
     [SerializeField]
-    private Text dayDurationTotal;
-    public float dayDuration;
+    private float dayDuration;
+    public float DayDuration{
+        get { return dayDuration; }
+        set {
+            dayDuration = value;
+            dayDurationText.text = GetStringHour(maxHour - dayDuration);
+        }
+    }
+
     public float durationScale = 5;
     public float resilienceMaxForSatisfation = 100;
 
-    public delegate void SliderEventHandler(float max);
-    public event SliderEventHandler EventSetNewMaxValue;
+    public delegate void ChangeValueEventHandler(float allmaxvaue);
+    public event ChangeValueEventHandler EventDayTotalChange;
+
+    public delegate void AddActionEventHandler(Transform cont);
+    public event AddActionEventHandler EventAddActionInList;
+
+    public delegate void RemoveActionEventHandler(int idde);
+    public event RemoveActionEventHandler EventRemoveActionInList;
 
     public override void Awake()
     {
         base.Awake();
-        dayDuration = maxHour;
-        SetDayDuration(dayDuration);
+        dayDurationText.text = GetStringHour(maxHour);
     }
-
-    public void SetDayDuration(float value)
+    public void CallOnDayDurationChange( float allmaxvaue)
     {
-        dayDurationTotal.text = GetStringHour(value);
-    }
-
-    public void CallEventSetNewMaxValue(float max)
-    {
-        if (EventSetNewMaxValue != null)
+        if (EventDayTotalChange != null)
         {
-            EventSetNewMaxValue(max);
+            EventDayTotalChange(allmaxvaue);
         }
     }
+    public void SetTextDayTime(float time)
+    {
+        dayDurationText.text = GetStringHour(maxHour - time);
+    }
+
 
     public int CountDaylist()
     {
-        return listActionInDay.Count;
+        if (listActionInDay != null)
+            return listActionInDay.Count;
+        else
+            return 0;
+    }
+    public List<ModelActions> GetListActionInDay()
+    {
+        return listActionInDay;
     }
 
     public ModelActions GetListActionInDay(int idde)
@@ -51,8 +70,15 @@ public class GameManagerTimeline : IDontDestroy<GameManagerTimeline>
     }
     public void AddActionInList(ModelActions action)
     {
-        if (dayDuration > 0)
-            listActionInDay.Add(action);
+        listActionInDay.Add(action);
+    }
+
+    public void CallEventAddActionInList( Transform cont)
+    {
+        if (EventAddActionInList != null)
+        {
+            EventAddActionInList(cont);
+        }
     }
     public void RemoveActionInList(int idde)
     {
@@ -66,12 +92,7 @@ public class GameManagerTimeline : IDontDestroy<GameManagerTimeline>
     }
     public float GetDuration(float duration)
     {
-        duration = (duration % durationScale != 0) ? (Mathf.Ceil(duration / durationScale) * durationScale) : duration;
-        if (dayDuration - duration >= 0)
-        {
-            return duration;
-        }
-        return 0;
+        return duration = (duration % durationScale != 0) ? (Mathf.Ceil(duration / durationScale) * durationScale) : duration;
     }
 
     public void SetUpDuration(int idde, float duration)

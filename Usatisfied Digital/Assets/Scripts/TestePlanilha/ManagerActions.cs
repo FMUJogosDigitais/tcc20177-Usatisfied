@@ -22,7 +22,7 @@ public class ManagerActions : IDontDestroy<ManagerActions> {
         {
             action.physic = (action.fisicoMulti * BasePontuacao.GetInstance().fisicoPhour) * action.duration;
             action.mental = (action.mentalMulti * BasePontuacao.GetInstance().mentalPhour) * action.duration;
-            action.emotional = (action.emocionalMulti * BasePontuacao.GetInstance().emocionalPhour) * action.duration;
+            action.emotional = (action.emotionalMulti * BasePontuacao.GetInstance().emocionalPhour) * action.duration;
             action.social = (action.socialMulti * BasePontuacao.GetInstance().socialPhour) * action.duration;
         }
     }

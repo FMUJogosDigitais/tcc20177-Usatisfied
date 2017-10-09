@@ -9,7 +9,7 @@ using Utils.Localization;
 public class TimeLineButtons : MonoBehaviour
 {
     public int daylistRef;
-    //ModelActions myaction;
+    public ModelActions myaction;
     public Image myicon;
     public Text myName;
     public Text myTime;
@@ -25,64 +25,63 @@ public class TimeLineButtons : MonoBehaviour
     private float actualDayDuration;
 
     GameManagerTimeline gmtl;
+
     private void OnEnable()
     {
-        //SetButtonTimeline();
-        InitialReferences();
-        gmtl.EventSetNewMaxValue += ChangeMaxValues;
+        // vai ativar sempre que dropar todos os botoes
+        //Debug.Log("Ativou o botão" + daylistRef);
+        StopAllCoroutines();
+        SetInitialReferences();
+        gmtl.EventDayTotalChange += ChangeDayTime;
+        //RefrashAddList(daylistRef);
+
     }
 
-    private void Start()
-    {
-        //Debug.Log(daylistRef);
-        SetButtonTimeline();
-    }
-
-    private void InitialReferences()
+    protected void SetInitialReferences()
     {
         gmtl = GameManagerTimeline.GetInstance();
     }
 
-    private void SetButtonTimeline(int idde = -1)
+    public void RefrashAddList(int refList)
     {
-        GameManagerTimeline gmtl = GameManagerTimeline.GetInstance();
-        idde = (idde < 0) ? daylistRef : idde;
-        ModelActions action = gmtl.GetListActionInDay(idde);
-        actualDayDuration = gmtl.dayDuration + action.duration;
-        myicon.sprite = action.icon;
-        name = action.name;
-        myName.GetComponent<LanguageText>().ChangeInitialReference(action.name);
-        action.duration = gmtl.GetDuration(action.duration);
-        //Debug.Log(action.duration);
-        myTime.text = gmtl.GetStringHour(action.duration);
-        myDuration.value = action.duration / gmtl.durationScale;
+        daylistRef = refList;
+        //ModelActions action = gmtl.GetListActionInDay(daylistRef);
+        myaction = gmtl.GetListActionInDay(daylistRef);
+        myicon.sprite = myaction.icon;
+        name = myName.text = myaction.name;
+        myName.GetComponent<LanguageText>().ChangeInitialReference(myaction.name);
         myDuration.gameObject.SetActive(TimeLineController.inEdit);
+        myDuration.value = myaction.duration / gmtl.durationScale;
         myProgress.gameObject.SetActive(!TimeLineController.inEdit);
-        gmtl.dayDuration -= action.duration;
-        gmtl.SetDayDuration(gmtl.dayDuration);
-        action.GeneradeResilience();
+        myTime.text = gmtl.GetStringHour(myaction.duration);
+        float maxAllduration = GameManagerTimeline.maxHour - gmtl.DayDuration;
+        gmtl.CallOnDayDurationChange(maxAllduration);
+        myaction.GeneradeResilience();
         SetResilienceImage();
     }
-
-    public void SlideChangeHour(int idde = -1)
+    public void SlideChangeHour()
     {
-        GameManagerTimeline gmtl = GameManagerTimeline.GetInstance();
-        idde = (idde < 0) ? daylistRef : idde;
-        ModelActions action = gmtl.GetListActionInDay(idde);
-        float durationInMin = myDuration.value * gmtl.durationScale;
-        float restday = (durationInMin - action.duration);
-        myTime.text = gmtl.GetStringHour(durationInMin);
-        action.duration = durationInMin;
-        gmtl.dayDuration -= restday;
-        gmtl.SetDayDuration(gmtl.dayDuration);
-        action.GeneradeResilience();
-        gmtl.CallEventSetNewMaxValue(gmtl.dayDuration);
+        myaction = gmtl.GetListActionInDay(daylistRef);
+        float diference = (myDuration.value * gmtl.durationScale) - myaction.duration;
+
+        //Debug.Log(diference);
+        myaction.duration = myDuration.value * gmtl.durationScale;
+        myTime.text = gmtl.GetStringHour(myaction.duration);
+        gmtl.DayDuration += diference;
+        float maxAllduration = GameManagerTimeline.maxHour - gmtl.DayDuration;
+        gmtl.CallOnDayDurationChange(maxAllduration);
+        myaction.GeneradeResilience();
         SetResilienceImage();
     }
 
+    public void ChangeDayTime(float allMaxDuration)
+    {
+        //Debug.Log(allMaxDuration + myaction.duration);
+        myDuration.maxValue = (allMaxDuration + myaction.duration) / gmtl.durationScale;
+    }
     private void SetResilienceImage(int idde = -1)
     {
-        GameManagerTimeline gmtl = GameManagerTimeline.GetInstance();
+        //GameManagerTimeline gmtl = GameManagerTimeline.GetInstance();
         idde = (idde < 0) ? daylistRef : idde;
         ModelActions action = gmtl.GetListActionInDay(idde);
         imgPhysic.fillAmount = action.GetResilienceAction(.25f, action.physic, gmtl.resilienceMaxForSatisfation);
@@ -97,18 +96,25 @@ public class TimeLineButtons : MonoBehaviour
         imgStress.fillAmount = tstress;
     }
 
-    public float ProgressBar(float speed, float value)
+    public void SetResiliencesFinal()
     {
-         return Mathf.Lerp(myProgress.value, value, Time.deltaTime * speed);
+        GameManagerResilience.GetInstance().CallEventUpdateResiliences((int)myaction.physic, (int)myaction.mental, (int)myaction.social, (int)myaction.emotional);
+    }
+    public IEnumerator BarProgress(float time)
+    {
+        float rate = 1 / time;
+        float i = 0;
+        while (i < 1)
+        {
+            i += Time.deltaTime * rate;
+            myProgress.value = Mathf.Lerp(0, 1, i);
+            yield return null;
+        }
     }
 
-    private void ChangeMaxValues(float max)
-    {
-        myDuration.maxValue = ((myDuration.value * gmtl.durationScale) + max) / gmtl.durationScale;
-    }
     private void OnDisable()
     {
-        gmtl.EventSetNewMaxValue += ChangeMaxValues;
+        gmtl.EventDayTotalChange -= ChangeDayTime;
     }
-
+  
 }

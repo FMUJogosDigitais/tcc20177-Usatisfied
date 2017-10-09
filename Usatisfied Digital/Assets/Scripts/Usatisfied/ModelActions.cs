@@ -18,7 +18,7 @@ public class ModelActions
     [Range(0f, 1)]
     public float socialMulti;
     [Range(0f, 1)]
-    public float emocionalMulti;
+    public float emotionalMulti;
 
     [Range(1, 24 * 60)]
     public float duration;
@@ -40,7 +40,7 @@ public class ModelActions
             this.fisicoMulti = template.fisicoMulti;
             this.mentalMulti = template.mentalMulti;
             this.socialMulti = template.socialMulti;
-            this.emocionalMulti = template.emocionalMulti;
+            this.emotionalMulti = template.emotionalMulti;
             this.duration = template.duration;
             this.physic = template.physic;
             this.mental = template.mental;
@@ -56,12 +56,10 @@ public class ModelActions
 
     public void GeneradeResilience()
     {
-        // a duração foi feita em minutos mas os calculos são em base de hora, então a duração é dividido por 60
-        float durationInHour = duration / 60;
-        physic = (GameManager.GetInstance().fisicoPerHour * fisicoMulti) * durationInHour;
-        mental = (GameManager.GetInstance().mentalPerHour * mentalMulti) * durationInHour;
-        social = (GameManager.GetInstance().socialPerHour * socialMulti) * durationInHour;
-        emotional = (GameManager.GetInstance().emocionalPerHour * emocionalMulti) * durationInHour;
+        physic = (GameManager.GetInstance().fisicoPerMin * fisicoMulti) * duration;
+        mental = (GameManager.GetInstance().mentalPerMin * mentalMulti) * duration;
+        social = (GameManager.GetInstance().socialPerMin * socialMulti) * duration;
+        emotional = (GameManager.GetInstance().emocionalPerMin * emotionalMulti) * duration;
     }
     public float GetResilienceAction(float baseAction, float value, float maxponts)
     {

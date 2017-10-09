@@ -1,12 +1,13 @@
 fileFormatVersion: 2
 guid: 800c77c712eb3974a9252533bdbb9af4
-timeCreated: 1504377654
+timeCreated: 1507037790
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: "sprites tela de configura\xE7\xE3o da a\xE7\xE3o_0"
-    21300002: "sprites tela de configura\xE7\xE3o da a\xE7\xE3o_1"
-    21300004: "sprites tela de configura\xE7\xE3o da a\xE7\xE3o_2"
+    21300000: ConfigButton
+    21300002: slidebutton
+    21300004: bordbutton
+    21300006: configAction_0
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -94,7 +95,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "sprites tela de configura\xE7\xE3o da a\xE7\xE3o_0"
+      name: ConfigButton
       rect:
         serializedVersion: 2
         x: 39
@@ -102,13 +103,13 @@ TextureImporter:
         width: 49
         height: 49
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: "sprites tela de configura\xE7\xE3o da a\xE7\xE3o_1"
+      name: slidebutton
       rect:
         serializedVersion: 2
         x: 5
@@ -116,13 +117,13 @@ TextureImporter:
         width: 117
         height: 17
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 34, y: 0, z: 41, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: "sprites tela de configura\xE7\xE3o da a\xE7\xE3o_2"
+      name: bordbutton
       rect:
         serializedVersion: 2
         x: 25
@@ -130,8 +131,22 @@ TextureImporter:
         width: 77
         height: 69
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 25, y: 25, z: 24, w: 23}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: configAction_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 109
+        width: 117
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 9, y: 0, z: 7, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0

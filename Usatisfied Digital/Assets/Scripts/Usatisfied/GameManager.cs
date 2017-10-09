@@ -5,11 +5,11 @@ using UnityEngine;
 public class GameManager : IDontDestroy<GameManager> {
 
     public enum Resiliences { Mental, Phisycs, Emotional, Social, Satisfaction }
-    public float fisicoPerHour = 30;
-    public float mentalPerHour = 12;
-    public float emocionalPerHour = 22;
-    public float socialPerHour = 32;
-    public float sleppPerHour = 10;
+    public float fisicoPerMin = 30;
+    public float mentalPerMin = 12;
+    public float emocionalPerMin = 22;
+    public float socialPerMin = 32;
+    public float sleppPerMin = 10;
 
     [SerializeField]
     private ModelActions[] templateActions;
