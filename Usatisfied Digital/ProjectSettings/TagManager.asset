@@ -13,9 +13,9 @@ TagManager:
   - UI
   - 
   - 
-  - teste
-  - 
-  - 
+  - fundo
+  - glow
+  - rosto
   - 
   - 
   - 
@@ -55,4 +55,7 @@ TagManager:
     locked: 0
   - name: Foeward2
     uniqueID: 1027732799
+    locked: 0
+  - name: rosto
+    uniqueID: 740871779
     locked: 0

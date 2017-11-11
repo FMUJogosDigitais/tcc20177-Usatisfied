@@ -53,7 +53,7 @@ namespace Utils.Localization
         public static void SetNewLanguage(Languages lng)
         {
             language = lng;
-#if UNITY_STANDALONE && !UNITY_EDITOR
+#if !UNITY_EDITOR
                 LanguagePlayerPref.SetPlayerLanguage(lng);
 #endif
         }
@@ -106,8 +106,22 @@ namespace Utils.Localization
             if (avariableLanguages == null)
             {
                 List<Languages> listAvariableLang = new List<Languages>();
-                string[] languageFiles = Directory.GetFiles(GetPoPath());
                 Languages selectedLanguage;
+#if UNITY_ANDROID || UNITY_IOS
+
+                TextAsset[] languageFiles = Resources.LoadAll<TextAsset>(resourceLanguagesFiles);
+                int ilang = languageFiles.Length;
+                for (int i = 0; i < ilang; i++)
+                {
+                    if (EnumParse.TryParseEnum<Languages>(Path.GetFileNameWithoutExtension(languageFiles[i].name), out selectedLanguage))
+                    {
+                        listAvariableLang.Add(selectedLanguage);
+                    }
+                }
+                listAvariableLang.Sort();
+                avariableLanguages = listAvariableLang.ToArray();
+#else
+                string[] languageFiles = Directory.GetFiles(GetPoPath());
                 int ilang = languageFiles.Length;
                 for (int i = 0; i < ilang; i++)
                 {
@@ -120,6 +134,7 @@ namespace Utils.Localization
                 }
                 listAvariableLang.Sort();
                 avariableLanguages = listAvariableLang.ToArray();
+#endif
             }
             return avariableLanguages;
         }
@@ -151,6 +166,11 @@ namespace Utils.Localization
             string fullpath = resourceLanguagesFiles + file + ".po";
             return Path.Combine(Application.streamingAssetsPath, fullpath);
         }
+
+        //#if UNITY_ANDROID || UNITY_EDITOR
+        //        string fullpath = resourceLanguagesFiles + file + ".po";
+        //        TextAsset textAsset = Resources.Load<TextAsset>(resourceLanguagesFiles + "pt_BR.po");
+        //        Debug.Log(textAsset);
         #region NOT CHANGE
         private void LoadFile(Languages lang)
         {
@@ -168,9 +188,16 @@ namespace Utils.Localization
             {
                 //possui o arquivo, e não é a linguagem padrão então TRADUZIR
                 initialized = false;// INDICA que não completou a tradução
+#if UNITY_ANDROID || UNITY_IOS
+                string file = lang.ToString().Replace("-", "_") + ".po";
+                string textAsset = Resources.Load<TextAsset>(resourceLanguagesFiles + file).text;
+#else
                 string fullpath = GetPoFile(lang);
-                //Debug.Log(fullpath);
                 string textAsset = File.ReadAllText(fullpath, System.Text.Encoding.UTF8);
+#endif
+
+                //Debug.Log(fullpath);
+
                 //Debug.Log(textAsset);
                 if (textAsset != null)
                 {
@@ -272,7 +299,7 @@ namespace Utils.Localization
                 }
                 else
                 {
-                    Debug.LogWarning("[LanguageManager] " + fullpath + " file not found.");
+                    Debug.LogWarning("[LanguageManager] " + lang.ToString() + " file not found.");
                     return;
                 }
                 initialized = true;
@@ -355,6 +382,6 @@ namespace Utils.Localization
                     return plural;
             }
         }
-        #endregion
+#endregion
     }
 }

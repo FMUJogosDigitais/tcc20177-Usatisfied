@@ -7,13 +7,13 @@ namespace Usatisfied.Navigation {
 
         public void TapToEditTimeLine()
         {
+            GameManager.ToggleStartGame();
             NavigationManager.GetInstance().ToggleEditTimeline();
-            GameManager.TogglePauseGame();
         }
         public void TapToIndex()
         {
+            GameManager.ToggleStartGame();
             NavigationManager.GetInstance().ToggleIndex();
-            GameManager.TogglePauseGame();
         }
     }
 }

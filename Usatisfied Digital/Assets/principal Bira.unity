@@ -715,7 +715,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 557229678}
   m_HandleRect: {fileID: 557229677}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -925,9 +925,10 @@ MonoBehaviour:
   buttonAction: {fileID: 1605516277545110, guid: a820e7071b8c15e45932712aeba92221,
     type: 2}
   listActionInDay: []
-  dayDurationTotal: {fileID: 0}
+  dayDurationText: {fileID: 0}
   dayDuration: 0
   durationScale: 5
+  resilienceMaxForSatisfation: 100
 --- !u!1 &319195679
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,7 +1358,7 @@ Prefab:
     - target: {fileID: 224175554058733142, guid: a820e7071b8c15e45932712aeba92221,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -140
+      value: -180
       objectReference: {fileID: 0}
     - target: {fileID: 224175554058733142, guid: a820e7071b8c15e45932712aeba92221,
         type: 2}
@@ -1385,6 +1386,36 @@ Prefab:
       value: -180
       objectReference: {fileID: 0}
     - target: {fileID: 224712241984418670, guid: a820e7071b8c15e45932712aeba92221,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 463
+      objectReference: {fileID: 0}
+    - target: {fileID: 224798133066759388, guid: a820e7071b8c15e45932712aeba92221,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224940431161291960, guid: a820e7071b8c15e45932712aeba92221,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224940431161291960, guid: a820e7071b8c15e45932712aeba92221,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224940431161291960, guid: a820e7071b8c15e45932712aeba92221,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 231.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224940431161291960, guid: a820e7071b8c15e45932712aeba92221,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -140
+      objectReference: {fileID: 0}
+    - target: {fileID: 224940431161291960, guid: a820e7071b8c15e45932712aeba92221,
         type: 2}
       propertyPath: m_SizeDelta.x
       value: 463
@@ -3776,9 +3807,10 @@ MonoBehaviour:
   isPersistant: 1
   buttonAction: {fileID: 0}
   listActionInDay: []
-  dayDurationTotal: {fileID: 0}
+  dayDurationText: {fileID: 0}
   dayDuration: 0
   durationScale: 5
+  resilienceMaxForSatisfation: 100
 --- !u!1 &1574333915
 GameObject:
   m_ObjectHideFlags: 0
@@ -4534,7 +4566,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1817533146}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5094,16 +5126,22 @@ MonoBehaviour:
     actionType: 0
     isBase: 1
     isActive: 1
+    isStressed: 0
+    stressRate: 0
     fisicoMulti: 0.5
     mentalMulti: 0.5
     socialMulti: 0.5
-    emocionalMulti: 0.5
+    emotionalMulti: 0
     duration: 18
     actionUse: 0
+    satisfaction: 0
     physic: 0
     mental: 0
     social: 0
     emotional: 0
+    animationCode: 
+    satisfactionCost: 1
+    chanceRate: 0
 --- !u!1 &1817533145
 GameObject:
   m_ObjectHideFlags: 0
@@ -5862,117 +5900,163 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPersistant: 1
-  fisicoPerHour: 30
-  mentalPerHour: 12
-  emocionalPerHour: 22
-  socialPerHour: 32
-  sleppPerHour: 10
+  fisicoPerMin: 0.3
+  mentalPerMin: 0.12
+  emocionalPerMin: 0.22
+  socialPerMin: 0.32
+  sleppPerMin: 0.1
+  debugSpeedyTime: 2
+  totalDayText: {fileID: 0}
+  totalDay: 0
   templateActions:
   - name: Sleep
     icon: {fileID: 21300056, guid: 2d68010cc5ad5d847b11efdad9d62c35, type: 3}
     actionType: 0
     isBase: 1
     isActive: 1
+    isStressed: 0
+    stressRate: 0
     fisicoMulti: 1
     mentalMulti: 0.5
     socialMulti: 0.5
-    emocionalMulti: 0.5
+    emotionalMulti: 0
     duration: 1
     actionUse: 0
+    satisfaction: 0
     physic: 0
     mental: 0
     social: 0
     emotional: 0
+    animationCode: 
+    satisfactionCost: 1
+    chanceRate: 0
   - name: Feed
     icon: {fileID: 21300058, guid: 2d68010cc5ad5d847b11efdad9d62c35, type: 3}
     actionType: 1
     isBase: 1
     isActive: 1
+    isStressed: 0
+    stressRate: 0
     fisicoMulti: 1
     mentalMulti: 0.5
     socialMulti: 0.5
-    emocionalMulti: 0.5
+    emotionalMulti: 0
     duration: 1
     actionUse: 0
+    satisfaction: 0
     physic: 0
     mental: 0
     social: 0
     emotional: 0
+    animationCode: 
+    satisfactionCost: 1
+    chanceRate: 0
   - name: Career
     icon: {fileID: 21300020, guid: 2d68010cc5ad5d847b11efdad9d62c35, type: 3}
     actionType: 2
     isBase: 1
     isActive: 1
+    isStressed: 0
+    stressRate: 0
     fisicoMulti: 1
     mentalMulti: 0.5
     socialMulti: 0.5
-    emocionalMulti: 0.5
+    emotionalMulti: 0
     duration: 1
     actionUse: 0
+    satisfaction: 0
     physic: 0
     mental: 0
     social: 0
     emotional: 0
+    animationCode: 
+    satisfactionCost: 1
+    chanceRate: 0
   - name: Fun
     icon: {fileID: 21300052, guid: 2d68010cc5ad5d847b11efdad9d62c35, type: 3}
     actionType: 3
     isBase: 1
     isActive: 1
+    isStressed: 0
+    stressRate: 0
     fisicoMulti: 1
     mentalMulti: 0.5
     socialMulti: 0.5
-    emocionalMulti: 0.5
+    emotionalMulti: 0
     duration: 1
     actionUse: 0
+    satisfaction: 0
     physic: 0
     mental: 0
     social: 0
     emotional: 0
+    animationCode: 
+    satisfactionCost: 1
+    chanceRate: 0
   - name: Sportes
     icon: {fileID: 21300056, guid: 2d68010cc5ad5d847b11efdad9d62c35, type: 3}
     actionType: 4
     isBase: 1
     isActive: 1
+    isStressed: 0
+    stressRate: 0
     fisicoMulti: 1
     mentalMulti: 0.5
     socialMulti: 0.5
-    emocionalMulti: 0.5
+    emotionalMulti: 0
     duration: 1
     actionUse: 0
+    satisfaction: 0
     physic: 0
     mental: 0
     social: 0
     emotional: 0
+    animationCode: 
+    satisfactionCost: 1
+    chanceRate: 0
   - name: Helth
     icon: {fileID: 21300050, guid: 2d68010cc5ad5d847b11efdad9d62c35, type: 3}
     actionType: 5
     isBase: 1
     isActive: 1
+    isStressed: 0
+    stressRate: 0
     fisicoMulti: 1
     mentalMulti: 0.5
     socialMulti: 0.5
-    emocionalMulti: 0.5
+    emotionalMulti: 0
     duration: 1
     actionUse: 0
+    satisfaction: 0
     physic: 0
     mental: 0
     social: 0
     emotional: 0
+    animationCode: 
+    satisfactionCost: 1
+    chanceRate: 0
   - name: Schedule
     icon: {fileID: 21300062, guid: 2d68010cc5ad5d847b11efdad9d62c35, type: 3}
     actionType: 6
     isBase: 1
     isActive: 1
+    isStressed: 0
+    stressRate: 0
     fisicoMulti: 1
     mentalMulti: 0.5
     socialMulti: 0.5
-    emocionalMulti: 0.5
+    emotionalMulti: 0
     duration: 1
     actionUse: 0
+    satisfaction: 0
     physic: 0
     mental: 0
     social: 0
     emotional: 0
+    animationCode: 
+    satisfactionCost: 1
+    chanceRate: 0
+  templateChallengers: []
 --- !u!114 &2041664404
 MonoBehaviour:
   m_ObjectHideFlags: 0

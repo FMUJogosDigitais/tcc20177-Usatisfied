@@ -1,7 +1,9 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using Utils.Localization;
 
 public class TimeLineController : MonoBehaviour
 {
@@ -12,18 +14,17 @@ public class TimeLineController : MonoBehaviour
     public Transform content;
     public static bool inEdit = false;
     protected GameManagerTimeline gmtl;
-    public Text totalDayText;
-    private int totalDay = 0;
-    public int TotalDay {
-        get { return totalDay; }
-        set { totalDay = value;
-            totalDayText.text = totalDay.ToString();
-        }
+
+    private void Awake()
+    {
+        SetInitialReferences();
     }
 
     protected virtual void OnEnable()
     {
         inEdit = false;
+        GameManager.StartGame = true;
+        StopAllCoroutines();
         SetInitialReferences();
         if (gmtl.CountDaylist() <= 0)
         {
@@ -38,7 +39,7 @@ public class TimeLineController : MonoBehaviour
 
     private void Start()
     {
-        TotalDay = 0;
+        GameManager.GetInstance().TotalDay = 0;
     }
     protected void SetInitialReferences()
     {
@@ -62,7 +63,12 @@ public class TimeLineController : MonoBehaviour
             float totalDay = 0;
             for (int x = 0; x < i; x++)
             {
-                GameObject go = Instantiate<GameObject>(gmtl.buttonAction, cont);
+                GameObject button = gmtl.buttonAction;
+                if (gmtl.GetListActionInDay(x).actionType == ModelActions.ActionType.Challenger)
+                {
+                    button = GameManagerChallengers.GetInstance().GetButtonChallenger();
+                }
+                GameObject go = Instantiate<GameObject>(button, cont);
                 go.GetComponent<TimeLineButtons>().RefrashAddList(x);
                 if (inEdit)
                     go.transform.SetAsFirstSibling();
@@ -79,13 +85,20 @@ public class TimeLineController : MonoBehaviour
     {
         button.SetResiliencesFinal();
     }
+    private void AddNewDay()
+    {
+        //TODO: Aqui o dia termina e é somado um dia no total;
+        GameManager.GetInstance().TotalDay += 1;
+        GameManagerChallengers.ResetActualChallengerInDay();
+        gmtl.DayDuration = 0;
+        AnimationManager.GetInstance().SetActionAnimation(ModelActions.ActionType.Sleep);
+    }
 
     protected virtual void OnDisable()
     {
         inEdit = true;
+        GameManager.StartGame = false;
         StopAllCoroutines();
-        StopCoroutine(DayCycle());
-        StopCoroutine(DayCycle());
     }
 
     IEnumerator DayCycle()
@@ -99,9 +112,9 @@ public class TimeLineController : MonoBehaviour
                 TimeLineButtons firstChild = content.GetChild(0).GetComponent<TimeLineButtons>();
                 if (firstChild)
                 {
-                    float minuteDuration = firstChild.myaction.duration * timeProgressBar;
+                    float minuteDuration = (firstChild.myaction.duration * timeProgressBar) / GameManager.GetInstance().debugSpeedyTime;
                     ModelActions.ActionType type = firstChild.myaction.actionType;
-                    AnimationManager.GetInstance().SetAnimation(type);
+                    AnimationManager.GetInstance().SetActionAnimation(type, firstChild.myaction.animationCode);
                     //TODO: Pausar a barra, apra reiniciar quando for para a edição.
                     StartCoroutine(firstChild.BarProgress(minuteDuration));
                     //Debug.Log(firstChild.daylistRef);
@@ -115,7 +128,22 @@ public class TimeLineController : MonoBehaviour
             }
             yield return null;
         }
-        TotalDay += 1;
-        gmtl.DayDuration = 0;
+        AddNewDay();
+        TutorialFase();
+    }
+
+    void TutorialFase()
+    {
+        TutorialController tutorialController = FindObjectOfType<TutorialController>();
+
+        if (GameManager.TutorialMode == true)
+        {  
+            TutorialManager.ToggleImagePanel(true);
+            TutorialManager.ToggleMessage(true);
+            TutorialManager.pauseTutorial = false;
+            TutorialManager.finishMessage = true;
+            TutorialManager.ToogleButtonNextTutorial();
+            tutorialController.NextOnTap();
+        }
     }
 }

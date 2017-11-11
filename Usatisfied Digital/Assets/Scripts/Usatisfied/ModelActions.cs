@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 using System;
-[System.Serializable]
 
-public class ModelActions
+[System.Serializable]
+public class ModelActions 
 {
     public string name;
-    public enum ActionType { Sleep, Feed, Career, Fun, Sports, Health, Schedule }
+    public enum ActionType { Sleep, Feed, Career, Fun, Sports, Health, Schedule, Challenger }
     public Sprite icon;
     public ActionType actionType;
     public bool isBase;
     public bool isActive = true;
     public bool isStressed = false;
+    [Range(0f, 1)]
+    public float stressRate;
+    [Header("Resiliences Multiplicadores")]
     [Range(0f, 1)]
     public float fisicoMulti;
     [Range(0f, 1)]
@@ -22,11 +25,20 @@ public class ModelActions
 
     [Range(1, 24 * 60)]
     public float duration;
-    public int actionUse;
+    public int actionUse = 0;
     public int satisfaction;
 
     [Header("Valor no Dia")]
-    public float physic, mental, social, emotional;
+    public float physic;
+    public float mental;
+    public float social;
+    public float emotional;
+
+    [Header("Challenge Sets")]
+    public string animationCode;
+    public int satisfactionCost = 1;
+    [Range(0f, 1)]
+    public float chanceRate;
 
     ModelActions() { }
     public ModelActions(ModelActions template)
@@ -50,6 +62,9 @@ public class ModelActions
             this.icon = template.icon;
             this.actionType = template.actionType;
             this.satisfaction = template.satisfaction;
+            this.animationCode = template.animationCode;
+            this.satisfactionCost = template.satisfactionCost;
+            this.chanceRate = template.chanceRate;
         }
         GeneradeResilience();
     }
@@ -70,6 +85,17 @@ public class ModelActions
         float totalResilience = (baseAction * value) / maxponts;
         return totalResilience;
     }
+
+    public float GetRecoveryStressSleepAction(float maxponts)
+    {
+        if (actionType == ActionType.Sleep)
+        {
+            float sleep = GameManager.GetInstance().sleppPerMin * duration;
+            sleep = (sleep > maxponts) ? maxponts : GameManager.GetInstance().sleppPerMin * duration;
+            return sleep / maxponts;
+        }
+        return 0;
+    }
     public float GetStressResilienceAction(float baseAction, float value, float maxponts)
     {
         if (actionType != ActionType.Sleep)
@@ -86,5 +112,10 @@ public class ModelActions
             }
         }
         return 0;
+    }
+
+    public void SetModel()
+    {
+        throw new NotImplementedException();
     }
 }

@@ -8,6 +8,7 @@ namespace Utils.Localization
 {
     public class LanguageText : MonoBehaviour
     {
+        public bool isTextAnimation = false;
         public enum FormatOutput { None, LowerCase, Uppercase, FirstUpper}
         public FormatOutput formatOutput;
         public string[] deafultPlural;
@@ -44,19 +45,22 @@ namespace Utils.Localization
         void OnChangeLanguage(LocalizationManager lang)
         {
             //Debug.Log(LocalizationManager.GetText(textLocalize, deafultPlural, qntPlural));
-            GetComponent<Text>().text = LocalizationManager.GetText(textLocalize, deafultPlural, qntPlural);
-
-            switch (formatOutput)
+            if (!isTextAnimation)
             {
-                case FormatOutput.FirstUpper:
-                    GetComponent<Text>().text = GetComponent<Text>().text.First().ToString().ToUpper() + GetComponent<Text>().text.Substring(1);
-                    break;
-                case FormatOutput.LowerCase:
-                    GetComponent<Text>().text = GetComponent<Text>().text.ToLower();
-                    break;
-                case FormatOutput.Uppercase:
-                    GetComponent<Text>().text = GetComponent<Text>().text.ToUpper();
-                    break;
+                GetComponent<Text>().text = LocalizationManager.GetText(textLocalize, deafultPlural, qntPlural);
+
+                switch (formatOutput)
+                {
+                    case FormatOutput.FirstUpper:
+                        GetComponent<Text>().text = GetComponent<Text>().text.First().ToString().ToUpper() + GetComponent<Text>().text.Substring(1);
+                        break;
+                    case FormatOutput.LowerCase:
+                        GetComponent<Text>().text = GetComponent<Text>().text.ToLower();
+                        break;
+                    case FormatOutput.Uppercase:
+                        GetComponent<Text>().text = GetComponent<Text>().text.ToUpper();
+                        break;
+                }
             }
         }
     }

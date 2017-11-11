@@ -8,9 +8,24 @@ public class ResiliencesManager : MonoBehaviour
     public bool isStress = false;
     public Image resilienceImage;
     public Image stressImage;
+    public Image iconeResilience;
+    public Image imgReceip;
     public GameManager.Resiliences resiliences;
+    public Color stressedColor;
+    Color normalColor;
     [SerializeField]
     int maxresilience = 100;
+    [SerializeField]
+    int stressOut = 80;
+    [Range(0, 1f)]
+    [SerializeField] float reduceStressed = 0;
+
+    [Range(0, 1f)]
+    [SerializeField]
+    public float reduceGainStressed = .5f;
+    [Range(0, 1f)]
+    [SerializeField]
+    float reducePartialGainStressed = .1f;
 
     [Range(0, 100)]
     [SerializeField]
@@ -21,14 +36,14 @@ public class ResiliencesManager : MonoBehaviour
         set
         {
             totalResilience += SetTotalResilience(value);
-            resilienceImage.fillAmount = (float)totalResilience / 100;
-            Debug.Log(resiliences.ToString() + " Gerou: " + totalResilience);
-            if (totalResilience > maxresilience)
+            ChangefillBar(resilienceImage, (float)totalResilience / 100);
+            //Debug.Log(resiliences.ToString() + " Gerou: " + totalResilience);
+            if (totalResilience >= maxresilience)
             {
                 GameManagerResilience.GetInstance().TotalSatisfaction = SetTotalSatisfaction(totalResilience);
                 TotalStress = totalResilience;
                 //Debug.Log("RETORNO "+ SetTotalSatisfaction(totalResilience));
-                resilienceImage.fillAmount = totalResilience = 0;
+                totalResilience = 0;
             }
         }
     }
@@ -40,36 +55,44 @@ public class ResiliencesManager : MonoBehaviour
         get { return totalStress; }
         set
         {
-            Debug.Log(resiliences.ToString() + " Passou Stress: " + value);
+            //Debug.Log(resiliences.ToString() + " Passou Stress: " + value);
             totalStress += SetTotalStress(value);
-            Debug.Log(resiliences.ToString() + " Gerou Stress: " + totalStress);
+            //Debug.Log(resiliences.ToString() + " Gerou Stress: " + totalStress);
             if (totalStress > maxresilience)
             {
                 isStress = true;
                 StressActions();
-                Debug.Log(resiliences.ToString() + " Gerou Stress Extressando: " + totalStress);
+                //Debug.Log(resiliences.ToString() + " Gerou Stress Extressando: " + totalStress);
                 totalStress = maxresilience;
             }
-            //Debug.Log(totalStress);
-            stressImage.fillAmount = (float)totalStress / 100;
+           // Debug.Log(totalStress);
+            ChangefillBar(stressImage, (float)totalStress / 100, false);
         }
     }
 
     private GameManagerResilience gmr;
 
+    private void Awake()
+    {
+        normalColor = iconeResilience.color;
+    }
+
     private void OnEnable()
     {
         SetInitialReferences();
         gmr.EventUpdateResiliences += ChangeResiliences;
+        gmr.EventRecoveryStress += RecoveryStress;
     }
     void SetInitialReferences()
     {
         gmr = GameManagerResilience.GetInstance();
+        
     }
 
     private int SetTotalResilience(int val)
     {
-
+        float subval = (1f - reduceStressed) * (float)val;
+        val = Mathf.RoundToInt(subval);
         int sub = (int)val / 100;
         return (sub < 1) ? val % 100 : val;
     }
@@ -91,7 +114,7 @@ public class ResiliencesManager : MonoBehaviour
     {
         if (!isStress)
         {
-            GameManagerResilience.GetInstance().GainSatisfation();
+            gmr.GainSatisfation();
             return 1;
         }
         else
@@ -109,7 +132,38 @@ public class ResiliencesManager : MonoBehaviour
 
     void StressActions()
     {
+        gmr.SetResilienceStressed(resiliences, true);
+        iconeResilience.color = stressedColor;
+        reduceStressed = 0;
+        if (this.isStress == true)
+        {
+            reduceStressed = reduceGainStressed;
+        }
+        switch (resiliences)
+        {
+            case GameManager.Resiliences.Phisycs:
+                reduceStressed += (gmr.mentalStressed) ?reducePartialGainStressed:0;
+                reduceStressed += (gmr.emotionalStressed) ? reducePartialGainStressed : 0;
+                reduceStressed += (gmr.socialStressed) ? reducePartialGainStressed : 0;
+                break;
+            case GameManager.Resiliences.Mental:
+                reduceStressed += (gmr.physicsStressed) ? reducePartialGainStressed : 0;
+                reduceStressed += (gmr.emotionalStressed) ? reducePartialGainStressed : 0;
+                reduceStressed += (gmr.socialStressed) ? reducePartialGainStressed : 0;
+                break;
+            case GameManager.Resiliences.Emotional:
+                reduceStressed += (gmr.mentalStressed) ? reducePartialGainStressed : 0;
+                reduceStressed += (gmr.physicsStressed) ? reducePartialGainStressed : 0;
+                reduceStressed += (gmr.socialStressed) ? reducePartialGainStressed : 0;
+                break;
+            case GameManager.Resiliences.Social:
+                reduceStressed += (gmr.mentalStressed) ? reducePartialGainStressed : 0;
+                reduceStressed += (gmr.physicsStressed) ? reducePartialGainStressed : 0;
+                reduceStressed += (gmr.emotionalStressed) ? reducePartialGainStressed : 0;
+                break;
+        }
         //TODO: Colocar animaçõe e efeitos que indicam que a resiliencia estressou;
+
     }
 
     private void ChangeResiliences(GameManager.Resiliences res, int totalval)
@@ -119,9 +173,53 @@ public class ResiliencesManager : MonoBehaviour
             TotalResilience = totalval;
         }
     }
+
+    private void RecoveryStress(int recovery)
+    {
+        if (totalStress > 0)
+        {
+            totalStress -= recovery;
+            totalStress = (totalStress < 0) ? 0 : totalStress;
+            stressImage.fillAmount = (float)totalStress / 100;
+            if (totalStress <= stressOut)
+            {
+                iconeResilience.color = normalColor;
+                isStress = false;
+            }
+        }
+    }
     private void OnDisable()
     {
         gmr.EventUpdateResiliences -= ChangeResiliences;
+        gmr.EventRecoveryStress -= RecoveryStress;
+    }
+
+    private void ChangefillBar(Image fill, float total, bool reset = true)
+    {
+        StartCoroutine(BarProgressResili(fill, total, reset));
+
+    }
+
+    IEnumerator BarProgressResili(Image fill, float total, bool reset)
+    {
+        float i = 0;
+        float rate = 1 / total;
+        float start = fill.fillAmount;
+        while (i < 1)
+        {
+            i += Time.deltaTime * rate;
+
+            fill.fillAmount = Mathf.Lerp(start, total, i);
+            yield return null;
+        }
+        if (fill.fillAmount >= 1 && reset)
+        {
+            fill.fillAmount = 0;
+        }
+        else if(fill.fillAmount >= 1 && !reset)
+        {
+            fill.fillAmount = 1;
+        }
     }
 
 }

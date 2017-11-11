@@ -15,14 +15,18 @@ public class TimeLineButtons : MonoBehaviour
     public Text myTime;
     public Slider myDuration;
     public Slider myProgress;
+    public Text satisfactionChallenger;
     [Header("Resiliences")]
     public Image imgPhysic;
     public Image imgMental;
     public Image imgSocial;
     public Image imgEmotional;
     public Image imgStress;
+    public Color colorStress;
+    public Color colorRecovery;
 
     private float actualDayDuration;
+    private bool stoptutor = false;
 
     GameManagerTimeline gmtl;
 
@@ -33,7 +37,7 @@ public class TimeLineButtons : MonoBehaviour
         StopAllCoroutines();
         SetInitialReferences();
         gmtl.EventDayTotalChange += ChangeDayTime;
-        //RefrashAddList(daylistRef);
+        RefrashAddList(daylistRef);
 
     }
 
@@ -48,9 +52,16 @@ public class TimeLineButtons : MonoBehaviour
         //ModelActions action = gmtl.GetListActionInDay(daylistRef);
         myaction = gmtl.GetListActionInDay(daylistRef);
         myicon.sprite = myaction.icon;
-        name = myName.text = myaction.name;
         myName.GetComponent<LanguageText>().ChangeInitialReference(myaction.name);
+        name = myName.text = LocalizationManager.GetText(myaction.name);
+        //name = myName.text = myaction.name;
         myDuration.gameObject.SetActive(TimeLineController.inEdit);
+        if (myaction.actionType == ModelActions.ActionType.Challenger)
+        {
+            myDuration.gameObject.SetActive(false);
+            satisfactionChallenger.text = String.Format("-{0:00}",myaction.satisfactionCost);
+        }
+            
         myDuration.value = myaction.duration / gmtl.durationScale;
         myProgress.gameObject.SetActive(!TimeLineController.inEdit);
         myTime.text = gmtl.GetStringHour(myaction.duration);
@@ -62,16 +73,28 @@ public class TimeLineButtons : MonoBehaviour
     public void SlideChangeHour()
     {
         myaction = gmtl.GetListActionInDay(daylistRef);
-        float diference = (myDuration.value * gmtl.durationScale) - myaction.duration;
 
-        //Debug.Log(diference);
-        myaction.duration = myDuration.value * gmtl.durationScale;
-        myTime.text = gmtl.GetStringHour(myaction.duration);
-        gmtl.DayDuration += diference;
-        float maxAllduration = GameManagerTimeline.maxHour - gmtl.DayDuration;
-        gmtl.CallOnDayDurationChange(maxAllduration);
-        myaction.GeneradeResilience();
-        SetResilienceImage();
+        if (GameManager.TutorialMode && TutorialManager.GetTutorialFase() == 25 && myDuration.value > 120 / gmtl.durationScale)
+        {
+            if (stoptutor == false) {
+                stoptutor = true;
+                TutorialPhase();
+            }
+            
+        }else
+
+        if (myaction.actionType != ModelActions.ActionType.Challenger)
+        {
+            float diference = (myDuration.value * gmtl.durationScale) - myaction.duration;
+            //Debug.Log(diference);
+            myaction.duration = myDuration.value * gmtl.durationScale;
+            myTime.text = gmtl.GetStringHour(myaction.duration);
+            gmtl.DayDuration += diference;
+            float maxAllduration = GameManagerTimeline.maxHour - gmtl.DayDuration;
+            gmtl.CallOnDayDurationChange(maxAllduration);
+            myaction.GeneradeResilience();
+            SetResilienceImage();
+        }        
     }
 
     public void ChangeDayTime(float allMaxDuration)
@@ -93,12 +116,28 @@ public class TimeLineButtons : MonoBehaviour
         tstress += action.GetStressResilienceAction(1, action.mental, gmtl.resilienceMaxForSatisfation);
         tstress += action.GetStressResilienceAction(1, action.social, gmtl.resilienceMaxForSatisfation);
         tstress += action.GetStressResilienceAction(1, action.emotional, gmtl.resilienceMaxForSatisfation);
+        imgStress.color = colorStress;
         imgStress.fillAmount = tstress;
+
+        if (action.actionType == ModelActions.ActionType.Sleep)
+        {
+            float recovery = action.GetRecoveryStressSleepAction(gmtl.resilienceMaxForSatisfation);
+            imgStress.color = colorRecovery;
+            imgStress.fillAmount = recovery;
+            //Debug.Log(recovery);
+        }
+        
     }
 
     public void SetResiliencesFinal()
     {
+        myaction.actionUse += 1;
         GameManagerResilience.GetInstance().CallEventUpdateResiliences((int)myaction.physic, (int)myaction.mental, (int)myaction.social, (int)myaction.emotional);
+        if (myaction.actionType == ModelActions.ActionType.Sleep)
+        {
+            float recovery = GameManager.GetInstance().sleppPerMin * myaction.duration;
+            GameManagerResilience.GetInstance().CallEventRecoveryStress((int)recovery);
+        }
     }
     public IEnumerator BarProgress(float time)
     {
@@ -111,7 +150,18 @@ public class TimeLineButtons : MonoBehaviour
             yield return null;
         }
     }
-
+    
+    private void TutorialPhase()
+    {
+        if (myDuration.value >= 120 / gmtl.durationScale)
+        {
+            TutorialManager.ToggleImagePanel(true);
+            TutorialManager.ToggleMessage(true);
+            TutorialManager.pauseTutorial = false;
+            TutorialManager.GetInstance().messagemBallon.GetComponentInChildren<TextAnimated>().SetMessage("Muito bem! Vamos ter uma boa refeição!", TutorialManager.GetInstance().FinishCallbak);
+            
+        }
+    }
     private void OnDisable()
     {
         gmtl.EventDayTotalChange -= ChangeDayTime;

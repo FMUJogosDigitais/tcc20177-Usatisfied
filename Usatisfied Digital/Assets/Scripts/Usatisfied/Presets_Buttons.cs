@@ -23,15 +23,18 @@ public class Presets_Buttons : UIScrollAndDrag
     {
         ModelActions action = GameManager.GetInstance().GetTemplates(idde);
         name = action.name;
+        namePreset.GetComponent<LanguageText>().ChangeInitialReference(action.name);
         namePreset.text = LocalizationManager.GetText(action.name);
         iconPreset.sprite = action.icon;
     }
 
     public override void BeginDrag(PointerEventData eventData)
     {
+
         base.BeginDrag(eventData);
         draggedItem = this;
         //TODO: Fazer o som de saida e alertar o painel que esta acontecendo um drag
+
     }
 
     protected override void CreateDragIcon(string iconname)

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 2d68010cc5ad5d847b11efdad9d62c35
-timeCreated: 1507068722
+timeCreated: 1509404235
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -333,13 +333,13 @@ TextureImporter:
       name: baseButton
       rect:
         serializedVersion: 2
-        x: 126
-        y: 83
-        width: 136
-        height: 219
+        x: 19
+        y: 11
+        width: 243
+        height: 291
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 54, y: 171, z: 53, w: 41}
+      border: {x: 174, y: 228, z: 52, w: 41}
       outline: []
       physicsShape: []
       tessellationDetail: 0

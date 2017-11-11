@@ -26,7 +26,7 @@ public class TextureMove : MonoBehaviour {
         {
             offsetY = Time.time * scrollSpeed;
         }
-        float offset = Time.time * scrollSpeed;
+        //float offset = Time.time * scrollSpeed;
         rend.material.SetTextureOffset("_MainTex", new Vector2(offsetX, offsetY));
        // rend.sortingOrder = 4;
     }

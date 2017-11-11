@@ -21,9 +21,12 @@ public class GameManagerPresets : MonoBehaviour
         {
             for (int x = 0; x < i; x++)
             {
-                GameObject go = Instantiate<GameObject>(buttonPreset, content);
-                go.GetComponent<Presets_Buttons>().presetID = x;
-                //preset.SetupButton(presets[x]);
+                if (presets[x].actionType != ModelActions.ActionType.Challenger)
+                {
+                    GameObject go = Instantiate<GameObject>(buttonPreset, content);
+                    go.GetComponent<Presets_Buttons>().presetID = x;
+                    //preset.SetupButton(presets[x]);
+                }
             }
         }
         else

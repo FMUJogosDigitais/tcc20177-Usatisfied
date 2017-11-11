@@ -1,29 +1,55 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.UI;
+using System;
 using UnityEngine;
 
 public class GameManager : IDontDestroy<GameManager> {
 
     public enum Resiliences { Mental, Phisycs, Emotional, Social, Satisfaction }
-    public float fisicoPerMin = 30;
-    public float mentalPerMin = 12;
-    public float emocionalPerMin = 22;
-    public float socialPerMin = 32;
-    public float sleppPerMin = 10;
+    [Range(0f, 1f)]
+    public float fisicoPerMin = .30f;
+    [Range(0f, 1f)]
+    public float mentalPerMin = .12f;
+    [Range(0f, 1f)]
+    public float emocionalPerMin = .22f;
+    [Range(0f, 1f)]
+    public float socialPerMin = .32f;
+    [Range(0f, 1f)]
+    public float sleppPerMin = .10f;
+
+    public static bool TutorialMode = false;
+    public float debugSpeedyTime = 2;
+    public static int maxDaysGame = 30;
+    public static int roundsDaysGame = 2;
+    public Text totalDayText;
+    [SerializeField]
+    private int totalDay = 0;
+    public int TotalDay
+    {
+        get { return totalDay; }
+        set
+        {
+            totalDay = value;
+            totalDayText.text = String.Format("Day #{0:00}", totalDay);
+        }
+    }
 
     [SerializeField]
     private ModelActions[] templateActions;
+    [SerializeField]
+    private ModelActions[] templateChallengers;
 
-    private static bool _pauseGame = false;
+    private static bool _startGame = false;
     public static bool _sleepAction { get; set; }
 
-    public static bool Pausegame()
+    public static bool StartGame
     {
-        return _pauseGame;
+        get { return _startGame; }
+        set { _startGame = value; }
     }
-    public static void TogglePauseGame()
+    public static void ToggleStartGame()
     {
-        _pauseGame = !_pauseGame;
+        _startGame = !_startGame;
     }
 
     public ModelActions GetTemplates(int idde)
@@ -33,6 +59,16 @@ public class GameManager : IDontDestroy<GameManager> {
     public ModelActions[] GetTemplates()
     {
         return templateActions;
+    }
+
+    public ModelActions GetChallenger(int idde)
+    {
+        return templateChallengers[idde];
+    }
+
+    public ModelActions[] GetChallenger()
+    {
+        return templateChallengers;
     }
 
 }
