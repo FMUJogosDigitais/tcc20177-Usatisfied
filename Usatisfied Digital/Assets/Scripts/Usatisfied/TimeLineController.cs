@@ -9,7 +9,7 @@ public class TimeLineController : MonoBehaviour
 {
 
     // Use this for initialization
-    [Range(0,1f)]
+    [Range(0, 1f)]
     public float timeProgressBar;
     public Transform content;
     public static bool inEdit = false;
@@ -104,7 +104,7 @@ public class TimeLineController : MonoBehaviour
     IEnumerator DayCycle()
     {
         int numberchild = content.childCount;
-        
+
         while (numberchild > 0)
         {
             if (inEdit == false)
@@ -134,10 +134,9 @@ public class TimeLineController : MonoBehaviour
 
     void TutorialFase()
     {
-        TutorialController tutorialController = FindObjectOfType<TutorialController>();
-
         if (GameManager.TutorialMode == true)
-        {  
+        {
+            TutorialController tutorialController = FindObjectOfType<TutorialController>();
             TutorialManager.ToggleImagePanel(true);
             TutorialManager.ToggleMessage(true);
             TutorialManager.pauseTutorial = false;

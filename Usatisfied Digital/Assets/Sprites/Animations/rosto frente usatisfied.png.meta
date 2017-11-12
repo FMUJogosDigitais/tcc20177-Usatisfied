@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 910faaec3c4fad24c829b9eaa5d99eef
-timeCreated: 1510006273
+timeCreated: 1510089546
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -105,7 +105,7 @@ TextureImporter:
         width: 121
         height: 156
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -119,7 +119,7 @@ TextureImporter:
         width: 121
         height: 154
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -133,7 +133,7 @@ TextureImporter:
         width: 120
         height: 175
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -147,7 +147,7 @@ TextureImporter:
         width: 121
         height: 159
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -161,8 +161,8 @@ TextureImporter:
         width: 109
         height: 62
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 43, y: 0, z: 40, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -175,7 +175,7 @@ TextureImporter:
         width: 121
         height: 154
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

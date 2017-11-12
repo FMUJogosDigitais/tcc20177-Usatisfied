@@ -23,6 +23,7 @@ public class TimeLineControllerEdit : TimeLineController, IDropHandler
         SetInitialReferences();
         ClearContent(contentEdit);
         CreateList(contentEdit);
+        SetTutorial();
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -33,7 +34,7 @@ public class TimeLineControllerEdit : TimeLineController, IDropHandler
         {
             TutorialManager.ToggleImagePanel(true);
             TutorialManager.ToggleMessage(true);
-            string message = LocalizationManager.GetText("Vamos tentar primeiro a alimentação!");
+            string message = LocalizationManager.GetText("Let's try the food first!");
             TutorialManager.GetInstance().messagemBallon.GetComponentInChildren<TextAnimated>().SetMessage(message, FinishCallbak);
             return;
         } 
@@ -44,7 +45,8 @@ public class TimeLineControllerEdit : TimeLineController, IDropHandler
                 TutorialManager.ToggleImagePanel(true);
                 TutorialManager.ToggleMessage(true);
                 TutorialManager.pauseTutorial = false;
-                TutorialManager.GetInstance().messagemBallon.GetComponentInChildren<TextAnimated>().SetMessage("Muito Bem agora vamos configurar o tempo de nossa refeição", TutorialManager.GetInstance().FinishCallbak);
+                string message = LocalizationManager.GetText("Very well now let's set the time for our meal");
+                TutorialManager.GetInstance().messagemBallon.GetComponentInChildren<TextAnimated>().SetMessage(message, TutorialManager.GetInstance().FinishCallbak);
             }
             ModelActions action = new ModelActions(GameManager.GetInstance().GetTemplates(preset.presetID));
             action.duration = gmtl.GetDuration(action.duration); // corrige o valor de acordo com o salto;
@@ -53,6 +55,7 @@ public class TimeLineControllerEdit : TimeLineController, IDropHandler
             if (GameManagerTimeline.maxHour - gmtl.DayDuration > 0)
             {
                 gmtl.DayDuration = dayduration;
+                //action.modelId = gmtl.CountDaylist();
                 gmtl.AddActionInList(action);
                 AddActionInParent(contentEdit);
                 gmtl.CallEventAddActionInList(contentEdit);
@@ -72,6 +75,21 @@ public class TimeLineControllerEdit : TimeLineController, IDropHandler
     {
         TutorialManager.ToogleButtonNextTutorial();
         TutorialManager.finishMessage = true;
+    }
+
+    private void SetTutorial()
+    {
+        //Debug.Log(TutorialManager.GetTutorialFase());
+        if (GameManager.TutorialMode && TutorialManager.GetTutorialFase() == 37)
+        {
+                TutorialController tutorialController = FindObjectOfType<TutorialController>();
+                TutorialManager.ToggleImagePanel(true);
+                TutorialManager.ToggleMessage(true);
+                TutorialManager.pauseTutorial = false;
+                TutorialManager.finishMessage = true;
+                TutorialManager.ToogleButtonNextTutorial();
+                tutorialController.NextOnTap();
+        }
     }
     protected override void OnDisable()
     {

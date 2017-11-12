@@ -25,7 +25,7 @@ public class GameManagerPresets : MonoBehaviour
                 {
                     GameObject go = Instantiate<GameObject>(buttonPreset, content);
                     go.GetComponent<Presets_Buttons>().presetID = x;
-                    //preset.SetupButton(presets[x]);
+                    go.GetComponent<Presets_Buttons>().SetupButton(x);
                 }
             }
         }

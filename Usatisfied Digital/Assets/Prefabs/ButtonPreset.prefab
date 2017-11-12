@@ -161,7 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 620da458baa68724a82fc4735e288a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  formatOutput: 0
+  isTextAnimation: 0
+  formatOutput: 3
   deafultPlural: []
   qntPlural: 1
 --- !u!114 &114706762697708188

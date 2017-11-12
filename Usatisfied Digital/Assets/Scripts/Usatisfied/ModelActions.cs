@@ -5,6 +5,7 @@ using System;
 public class ModelActions 
 {
     public string name;
+    public int modelId;
     public enum ActionType { Sleep, Feed, Career, Fun, Sports, Health, Schedule, Challenger }
     public Sprite icon;
     public ActionType actionType;

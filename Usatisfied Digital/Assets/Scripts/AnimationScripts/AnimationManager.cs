@@ -21,6 +21,7 @@ public class AnimationManager : IDontDestroy<AnimationManager> {
     public GameObject careerScene;
     public GameObject healthScene;
     public GameObject chuvaScene;
+	public GameObject lazyScene;
 
     // Ganhando satisfação
     public GameObject satisfationStars;
@@ -131,7 +132,7 @@ public class AnimationManager : IDontDestroy<AnimationManager> {
                                 player.SetTrigger("Des_Transito");
                                 break;
                             case "Des_Preguica":
-                                funScene.SetActive(true);
+                                lazyScene.SetActive(true);
                                 player.SetTrigger("Des_Preguica");
                                 break;
                             case "Des_Chuva":
@@ -149,6 +150,7 @@ public class AnimationManager : IDontDestroy<AnimationManager> {
     private void TurnOffScenaries() {
         restScene.SetActive(false);
         funScene.SetActive(false);
+		lazyScene.SetActive(false);
         feedScene.SetActive(false);
         careerScene.SetActive(false);
         healthScene.SetActive(false);
@@ -177,6 +179,31 @@ public class AnimationManager : IDontDestroy<AnimationManager> {
         calcada.GetComponent<TextureMove>().scrollSpeed = speed;
         predio.GetComponent<TextureMove>().scrollSpeed = speed / 10;
 
+    }
+
+    public void SetFaceAnimation(string trigger)
+    {
+        switch (trigger)
+        {
+            case "Des_VizinhoBarulhento":
+                restScene.SetActive(true);
+                SetNight();
+                player.SetTrigger("Des_VizinhoBarulhento");
+                break;
+
+            case "Des_Transito":
+                player.SetTrigger("Des_Transito");
+                break;
+            case "Des_Preguica":
+                lazyScene.SetActive(true);
+                player.SetTrigger("Des_Preguica");
+                break;
+            case "Des_Chuva":
+                SetRain();
+                SetNight();
+                player.SetTrigger("Des_Chuva");
+                break;
+        }
     }
 
     public void TestButton(string test)

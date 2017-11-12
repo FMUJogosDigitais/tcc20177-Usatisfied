@@ -13,7 +13,7 @@ public class TutorialManager : IDontDestroy<TutorialManager>
     public GameObject buttonNext;
     
 
-    public static bool startTutorial = false;
+    public bool startTutorial = false;
     static int tutorialFase = 0;
     public static int tutorialFinal = 50;
     public float delayStart = 3f;

@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System;
 using UnityEngine;
+using Utils.Localization;
 
 public class GameManager : IDontDestroy<GameManager> {
 
@@ -30,7 +31,8 @@ public class GameManager : IDontDestroy<GameManager> {
         set
         {
             totalDay = value;
-            totalDayText.text = String.Format("Day #{0:00}", totalDay);
+            string message = LocalizationManager.GetText("Day #{0:00}");
+            totalDayText.text = String.Format(message, totalDay);
         }
     }
 

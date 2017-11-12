@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Usatisfied\n"
-"POT-Creation-Date: 2017-09-09 12:10-0300\n"
-"PO-Revision-Date: 2017-09-09 12:10-0300\n"
+"POT-Creation-Date: 2017-11-11 18:44-0200\n"
+"PO-Revision-Date: 2017-11-11 18:44-0200\n"
 "Last-Translator: \n"
 "Language-Team: Immersive Games <immersivegames.com.br>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.4\n"
 "X-Poedit-Basepath: ../../Scripts\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -47,5 +47,363 @@ msgid "OK"
 msgstr "OK"
 
 #: MyTools/Localization/ForPoEdit.cs:15
+msgid "Play"
+msgstr "Jogar"
+
+#: MyTools/Localization/ForPoEdit.cs:16
+msgid "Options"
+msgstr "Opções"
+
+#: MyTools/Localization/ForPoEdit.cs:17
+msgid "Option"
+msgstr "Opção"
+
+#: MyTools/Localization/ForPoEdit.cs:18
+msgid "Credit"
+msgstr "Créditos"
+
+#: MyTools/Localization/ForPoEdit.cs:19
+msgid "Total days"
+msgstr "Total de Dias"
+
+#: MyTools/Localization/ForPoEdit.cs:20
+msgid "Sleep"
+msgstr "Dormir"
+
+#: MyTools/Localization/ForPoEdit.cs:21
+msgid "Feed"
+msgstr "Comer"
+
+#: MyTools/Localization/ForPoEdit.cs:22
+msgid "Career"
+msgstr "Carreira"
+
+#: MyTools/Localization/ForPoEdit.cs:23
+msgid "Fun"
+msgstr "Diversão"
+
+#: MyTools/Localization/ForPoEdit.cs:24
+msgid "Sports"
+msgstr "Esportes"
+
+#: MyTools/Localization/ForPoEdit.cs:25
+msgid "Health"
+msgstr "Saúde"
+
+#: MyTools/Localization/ForPoEdit.cs:26
+msgid "Schedule"
+msgstr "Programa"
+
+#: MyTools/Localization/ForPoEdit.cs:27
+msgid "Neighbors"
+msgstr "Vizinhos"
+
+#: MyTools/Localization/ForPoEdit.cs:28
+msgid "Trafic"
+msgstr "Trãnsito"
+
+#: MyTools/Localization/ForPoEdit.cs:29
+msgid "Laziness"
+msgstr "Preguiça"
+
+#: MyTools/Localization/ForPoEdit.cs:30
+msgid "Rain"
+msgstr "Chuva"
+
+#: MyTools/Localization/ForPoEdit.cs:31
 msgid "Apple"
 msgstr "Maçã"
+
+#: Usatisfied/GameManager.cs:34
+#, csharp-format
+msgid "Day #{0:00}"
+msgstr "Dia Nº{0:00}"
+
+#: Usatisfied/TimeLineControllerEdit.cs:37
+msgid "Let's try the food first!"
+msgstr "Vamos tentar primeiro a alimentação!"
+
+#: Usatisfied/TimeLineControllerEdit.cs:48
+msgid "Very well now let's set the time for our meal"
+msgstr "Muito Bem agora vamos configurar o tempo de nossa refeição"
+
+#: Usatisfied/Tutorials/TutorialController.cs:73
+msgid "_Hello, My name is Maira, welcome to U-Satisfied"
+msgstr "_Olá, Meu nome é Maíra, bem vindo ao U-Satisfied"
+
+#: Usatisfied/Tutorials/TutorialController.cs:88
+msgid "I need your help to improve my life and make it fantastic!"
+msgstr "Preciso da sua ajuda para aprimorar minha vida e torna-la fantástica!"
+
+#: Usatisfied/Tutorials/TutorialController.cs:94
+msgid "for this we need to take care of our quality of life"
+msgstr "para isso precisamos cuidar bem da nossa qualidade de vida"
+
+#: Usatisfied/Tutorials/TutorialController.cs:99
+msgid "I hope with your experience to improve my resilience"
+msgstr "Eu conto com sua experiência para melhorar as minhas resiliências"
+
+#: Usatisfied/Tutorials/TutorialController.cs:104
+msgid "and speaking on them let me introduce to you"
+msgstr "por falar nelas deixe-me apresenta-las a você"
+
+#: Usatisfied/Tutorials/TutorialController.cs:116
+msgid ""
+"To overcome intellect or psychological challenges I need mental resilience"
+msgstr ""
+"Para superar desafios de intelecto ou psicológico eu preciso de resiliência "
+"mental"
+
+#: Usatisfied/Tutorials/TutorialController.cs:128
+msgid "For strength and health challenges I need physical resilience"
+msgstr "Para os desafios de força e saúde eu preciso de resiliência fisica"
+
+#: Usatisfied/Tutorials/TutorialController.cs:140
+msgid "For a good coexistence with others I need social resilience"
+msgstr "Uma boa convivência com os outros eu preciso de resiliência social"
+
+#: Usatisfied/Tutorials/TutorialController.cs:152
+msgid "and to feel myself comfortable and happy, I need emotional resilience"
+msgstr ""
+"e para me sentir confortável e feliz comigo, preciso de resiliência emocional"
+
+#: Usatisfied/Tutorials/TutorialController.cs:158
+msgid "whenever I fillup a resilience to its maximum I get very SATISFIED!"
+msgstr ""
+"sempre que eu treinar uma resiliência ao seu máximo eu fico muito SATISFEITA!"
+
+#: Usatisfied/Tutorials/TutorialController.cs:171
+msgid ""
+"So I accumulate satisfaction points that at the end of the day will help me"
+msgstr "Assim eu acumulo pontos de satisfações que no fim do dia vão me ajudar"
+
+#: Usatisfied/Tutorials/TutorialController.cs:177
+msgid "to meet new challenges. At the end SATISFACTION is all we want, is it?"
+msgstr ""
+"a superar novos desafios. No fim SATISFAÇÃO é tudo que queremos, concorda?"
+
+#: Usatisfied/Tutorials/TutorialController.cs:190
+msgid "Well, now enough talk and let's organize ourselves."
+msgstr "Bom, agora chega de conversa e vamos nos organizar."
+
+#: Usatisfied/Tutorials/TutorialController.cs:195
+msgid "Let's start programming our first day"
+msgstr "Vamos iniciar a programação do nosso primeiro dia"
+
+#: Usatisfied/Tutorials/TutorialController.cs:201
+msgid "Nothing better than starting the day with a good breakfast"
+msgstr "Nada melhor que começar o dia com um bom café da manhã"
+
+#: Usatisfied/Tutorials/TutorialController.cs:206
+msgid "Drag the indicated icon to the panel below!"
+msgstr "Arraste o ícone indicado para o painel abaixo!"
+
+#: Usatisfied/Tutorials/TutorialController.cs:218
+msgid "Now let's adjust the time of our meal!"
+msgstr "Agora vamos configurar o tempo de nossa refeição!"
+
+#: Usatisfied/Tutorials/TutorialController.cs:223
+msgid "Let's adjust for 2:00 meal hours!"
+msgstr "Vamos ajustar para 2:00 de refeição!"
+
+#: Usatisfied/Tutorials/TutorialController.cs:235
+msgid ""
+"Do you see this markup? each color represents the gains in each resilience"
+msgstr ""
+"Esta vendo esta marcação? cada cor representa os ganhos em cada resiliência"
+
+#: Usatisfied/Tutorials/TutorialController.cs:240
+msgid "It's important to keep the balance between all the resilience, and more"
+msgstr "É importante manter o equilíbrio entre todas as resiliências, e mais"
+
+#: Usatisfied/Tutorials/TutorialController.cs:245
+msgid "Avoid the hype, do something for a long time can be a STRESS"
+msgstr "Evitar os exageros, fazer algo por muito tempo pode ser um ESTRESSE"
+
+#: Usatisfied/Tutorials/TutorialController.cs:251
+msgid "That's it, let's do it, for today we will only to do this!"
+msgstr "Bom, vamos comer, por hoje só faremos isso!"
+
+#: Usatisfied/Tutorials/TutorialController.cs:256
+msgid "Let's hit the action button and follow to perform the actions!"
+msgstr "Vamos apertar o botão de ação e seguir para executar as ações!"
+
+#: Usatisfied/Tutorials/TutorialController.cs:267
+msgid "Delicious! Note that the resiliencies up there have increased!"
+msgstr "Que delicia! Note que as resiliências lá em cima aumentaram!"
+
+#: Usatisfied/Tutorials/TutorialController.cs:272
+msgid "Whenever a resilience fills your bar during the day"
+msgstr "Sempre que uma resiliência encher sua barra durante o dia"
+
+#: Usatisfied/Tutorials/TutorialController.cs:277
+msgid "We won a point of satisfaction, but attention!"
+msgstr "Ganhamos um ponto de satisfação, mas cuidado!"
+
+#: Usatisfied/Tutorials/TutorialController.cs:282
+msgid "if the amount exceeds the bar, we will accumulate stress"
+msgstr "se a quantia acumulada ultrapassar a barra, vamos acumular estresse"
+
+#: Usatisfied/Tutorials/TutorialController.cs:287
+msgid "Let's go back to the editing screen! Clicking on the screen"
+msgstr "Vamos voltar a tela de edição! Clicando na tela"
+
+#: Usatisfied/Tutorials/TutorialController.cs:298
+msgid "I think I can leave everything under your care! But before some tips"
+msgstr ""
+"Acho que já posso deixar tudo sobre seus cuidados! Mas antes umas dicas"
+
+#: Usatisfied/Tutorials/TutorialController.cs:303
+msgid "The action of sleeping, recovering the stressed resilience, then"
+msgstr "A ação de dormir, recupera as resiliências estressadas, então"
+
+#: Usatisfied/Tutorials/TutorialController.cs:308
+msgid "It is important in the day there is a sleeping action"
+msgstr "É importante no dia haja uma ação de dormir"
+
+#: Usatisfied/Tutorials/TutorialController.cs:313
+msgid "to remove an action double click on it!"
+msgstr "para remover uma ação clique duas vezes sobre ela!"
+
+#: Usatisfied/Tutorials/TutorialController.cs:318
+msgid "sometimes there will be some unexpected challenges"
+msgstr "Com o passar do tempo surgirão algumas atividades inesperadas"
+
+#: Usatisfied/Tutorials/TutorialController.cs:323
+msgid "but do not worry, with resilience we can overcome"
+msgstr "mas não se preocupe, tendo resiliencias podemos superar"
+
+#: Usatisfied/Tutorials/TutorialController.cs:328
+msgid "We're ready to go!"
+msgstr "Estamos prontos para começar!"
+
+#~ msgid "Estamos prontos para começar!"
+#~ msgstr "Estamos prontos para começar!"
+
+#~ msgid "mas não se preocupe, tendo resiliencias podemos superar"
+#~ msgstr "mas não se preocupe, tendo resiliencias podemos superar"
+
+#~ msgid "Com o passar do tempo surgirão algumas atividades inesperadas"
+#~ msgstr "Com o passar do tempo surgirão algumas atividades inesperadas"
+
+#~ msgid "para remover uma ação cluque duas vezes sobre ela!"
+#~ msgstr "para remover uma ação cluque duas vezes sobre ela!"
+
+#~ msgid ""
+#~ "é importante que dentro da programação do dia esteja a ação de dormir"
+#~ msgstr ""
+#~ "é importante que dentro da programação do dia esteja a ação de dormir"
+
+#~ msgid "A ação de dormir, recupera as resiliencias estressadas, então"
+#~ msgstr "A ação de dormir, recupera as resiliencias estressadas, então"
+
+#~ msgid ""
+#~ "Acho que ja poddo deixar tudo sobre seus cuidados! Mas antes umas dicas"
+#~ msgstr ""
+#~ "Acho que ja poddo deixar tudo sobre seus cuidados! Mas antes umas dicas"
+
+#~ msgid "Vamos voltar a tela de edição! Clicando na tela"
+#~ msgstr "Vamos voltar a tela de edição! Clicando na tela"
+
+#~ msgid "se a quantia acumulada ultrapassar a barra, vamos acumular estresse"
+#~ msgstr "se a quantia acumulada ultrapassar a barra, vamos acumular estresse"
+
+#~ msgid "Ganhamos um ponto de satisfação, mas cuidado!"
+#~ msgstr "Ganhamos um ponto de satisfação, mas cuidado!"
+
+#~ msgid "Que delicia! Note que as resiliencias lá em cima aumentaram!"
+#~ msgstr "Que delicia! Note que as resiliencias lá em cima aumentaram!"
+
+#~ msgid "Vamos apertar o botão de ação e seguir para executar as ações!"
+#~ msgstr "Vamos apertar o botão de ação e seguir para executar as ações!"
+
+#~ msgid "Bom, vamos comer, por hoje só faremos isso!"
+#~ msgstr "Bom, vamos comer, por hoje só faremos isso!"
+
+#~ msgid "Evitar os exageros, fazer algo por muito tempo pode ser um ESTRESSE"
+#~ msgstr "Evitar os exageros, fazer algo por muito tempo pode ser um ESTRESSE"
+
+#~ msgid "É importante manter o equilibrio entre todas as resiliênas, e mais"
+#~ msgstr "É importante manter o equilibrio entre todas as resiliênas, e mais"
+
+#~ msgid ""
+#~ "Esta vendo esta marcação? cada cor representa os ganhos em cada "
+#~ "resiliencia"
+#~ msgstr ""
+#~ "Esta vendo esta marcação? cada cor representa os ganhos em cada "
+#~ "resiliencia"
+
+#~ msgid "Vamos ajustar para 2:00 de refeição!"
+#~ msgstr "Vamos ajustar para 2:00 de refeição!"
+
+#~ msgid "Agora vamos ajustar o tempo da nossa refeição!"
+#~ msgstr "Agora vamos ajustar o tempo da nossa refeição!"
+
+#~ msgid "Arraste o icone indicado para o painel abaixo!"
+#~ msgstr "Arraste o icone indicado para o painel abaixo!"
+
+#~ msgid "Nada melhor que começar o dia com um bom café da manhã"
+#~ msgstr "Nada melhor que começar o dia com um bom café da manhã"
+
+#~ msgid "Vamos iniciar a programação do nosso primeiro dia"
+#~ msgstr "Vamos iniciar a programação do nosso primeiro dia"
+
+#~ msgid "Bom, agora chega de conversa e vamos nos organizar."
+#~ msgstr "Bom, agora chega de conversa e vamos nos organizar."
+
+#~ msgid ""
+#~ "a superar novos desafios. No fim SATISFAÇÃO é tudo que queremos, concorda?"
+#~ msgstr ""
+#~ "a superar novos desafios. No fim SATISFAÇÃO é tudo que queremos, concorda?"
+
+#~ msgid ""
+#~ "Assim eu acumulo pontos de satisfações que no fim do dia vão me ajudar"
+#~ msgstr ""
+#~ "Assim eu acumulo pontos de satisfações que no fim do dia vão me ajudar"
+
+#~ msgid ""
+#~ "sempre que eu treinar uma resiliencia ao seu máximo eu fico muito "
+#~ "SATISFEITA!"
+#~ msgstr ""
+#~ "sempre que eu treinar uma resiliencia ao seu máximo eu fico muito "
+#~ "SATISFEITA!"
+
+#~ msgid ""
+#~ "e para me sentir confortavel e feliz comigo, preciso de resiliência "
+#~ "emocional"
+#~ msgstr ""
+#~ "e para me sentir confortavel e feliz comigo, preciso de resiliência "
+#~ "emocional"
+
+#~ msgid "Uma boa convivencia com os outros eu preciso de resiliência social"
+#~ msgstr "Uma boa convivencia com os outros eu preciso de resiliência social"
+
+#~ msgid "Para os desafios de força e saúde eu preciso de resiliência fisica"
+#~ msgstr "Para os desafios de força e saúde eu preciso de resiliência fisica"
+
+#~ msgid ""
+#~ "Para superar desafios de intelecto ou psicologico eu preciso de "
+#~ "resiliência mental"
+#~ msgstr ""
+#~ "Para superar desafios de intelecto ou psicologico eu preciso de "
+#~ "resiliência mental"
+
+#~ msgid "por falar nelas deixe-me apresenta-las a você"
+#~ msgstr "por falar nelas deixe-me apresenta-las a você"
+
+#~ msgid "conto com sua experiencia para melhorar as minhas resiliências"
+#~ msgstr "conto com sua experiencia para melhorar as minhas resiliências"
+
+#~ msgid "para isso precisamos cuidar bem da nossa qualidade de vida"
+#~ msgstr "para isso precisamos cuidar bem da nossa qualidade de vida"
+
+#~ msgid ""
+#~ "Preciso da sua ajuda para aprimorar minha vida e torna-la fantástica!"
+#~ msgstr ""
+#~ "Preciso da sua ajuda para aprimorar minha vida e torna-la fantástica!"
+
+#~ msgid "Muito Bem agora vamos configurar o tempo de nossa refeição"
+#~ msgstr "Muito Bem agora vamos configurar o tempo de nossa refeição"
+
+#~ msgid "Vamos tentar primeiro a alimentação!"
+#~ msgstr "Vamos tentar primeiro a alimentação!"

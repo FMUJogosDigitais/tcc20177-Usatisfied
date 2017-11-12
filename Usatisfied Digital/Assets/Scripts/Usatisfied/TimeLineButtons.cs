@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Utils.Localization;
 
-public class TimeLineButtons : MonoBehaviour
+public class TimeLineButtons : MonoBehaviour, IPointerDownHandler
 {
     public int daylistRef;
     public ModelActions myaction;
@@ -28,6 +28,12 @@ public class TimeLineButtons : MonoBehaviour
     private float actualDayDuration;
     private bool stoptutor = false;
 
+    bool one_click = false;
+    bool timer_running;
+    float timer_for_double_click;
+    //this is how long in seconds to allow for a double click
+    float delay = 0.25f;
+
     GameManagerTimeline gmtl;
 
     private void OnEnable()
@@ -37,7 +43,7 @@ public class TimeLineButtons : MonoBehaviour
         StopAllCoroutines();
         SetInitialReferences();
         gmtl.EventDayTotalChange += ChangeDayTime;
-        RefrashAddList(daylistRef);
+        //RefrashAddList(daylistRef);
 
     }
 
@@ -52,6 +58,7 @@ public class TimeLineButtons : MonoBehaviour
         //ModelActions action = gmtl.GetListActionInDay(daylistRef);
         myaction = gmtl.GetListActionInDay(daylistRef);
         myicon.sprite = myaction.icon;
+        //Debug.Log(myaction.name);
         myName.GetComponent<LanguageText>().ChangeInitialReference(myaction.name);
         name = myName.text = LocalizationManager.GetText(myaction.name);
         //name = myName.text = myaction.name;
@@ -59,9 +66,9 @@ public class TimeLineButtons : MonoBehaviour
         if (myaction.actionType == ModelActions.ActionType.Challenger)
         {
             myDuration.gameObject.SetActive(false);
-            satisfactionChallenger.text = String.Format("-{0:00}",myaction.satisfactionCost);
+            satisfactionChallenger.text = String.Format("-{0:00}", myaction.satisfactionCost);
         }
-            
+
         myDuration.value = myaction.duration / gmtl.durationScale;
         myProgress.gameObject.SetActive(!TimeLineController.inEdit);
         myTime.text = gmtl.GetStringHour(myaction.duration);
@@ -76,12 +83,14 @@ public class TimeLineButtons : MonoBehaviour
 
         if (GameManager.TutorialMode && TutorialManager.GetTutorialFase() == 25 && myDuration.value > 120 / gmtl.durationScale)
         {
-            if (stoptutor == false) {
+            if (stoptutor == false)
+            {
                 stoptutor = true;
                 TutorialPhase();
             }
-            
-        }else
+
+        }
+        else
 
         if (myaction.actionType != ModelActions.ActionType.Challenger)
         {
@@ -94,7 +103,7 @@ public class TimeLineButtons : MonoBehaviour
             gmtl.CallOnDayDurationChange(maxAllduration);
             myaction.GeneradeResilience();
             SetResilienceImage();
-        }        
+        }
     }
 
     public void ChangeDayTime(float allMaxDuration)
@@ -126,7 +135,7 @@ public class TimeLineButtons : MonoBehaviour
             imgStress.fillAmount = recovery;
             //Debug.Log(recovery);
         }
-        
+
     }
 
     public void SetResiliencesFinal()
@@ -150,7 +159,20 @@ public class TimeLineButtons : MonoBehaviour
             yield return null;
         }
     }
-    
+
+    private void RemoveButtom(GameObject mybuttom)
+    {
+        GameManagerTimeline.GetInstance().DebugDayList();
+        Debug.Log("------------------");
+        if (TimeLineController.inEdit == true)
+        {
+            //Debug.Log(mybuttom.name);
+            gmtl.RemoveActionInList(this.daylistRef);
+            Destroy(this.gameObject);
+        }
+        GameManagerTimeline.GetInstance().DebugDayList();
+    }
+
     private void TutorialPhase()
     {
         if (myDuration.value >= 120 / gmtl.durationScale)
@@ -159,12 +181,31 @@ public class TimeLineButtons : MonoBehaviour
             TutorialManager.ToggleMessage(true);
             TutorialManager.pauseTutorial = false;
             TutorialManager.GetInstance().messagemBallon.GetComponentInChildren<TextAnimated>().SetMessage("Muito bem! Vamos ter uma boa refeição!", TutorialManager.GetInstance().FinishCallbak);
-            
+
         }
     }
     private void OnDisable()
     {
         gmtl.EventDayTotalChange -= ChangeDayTime;
     }
-  
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (TimeLineController.inEdit != true) return;
+        if (!one_click)
+        {
+            one_click = true;
+            timer_for_double_click = Time.time + delay;
+        }
+        else if (one_click && timer_for_double_click > Time.time)
+        {
+            RemoveButtom(eventData.pointerCurrentRaycast.gameObject);
+            one_click = false;
+        }
+        else
+        {
+            one_click = false;
+            timer_for_double_click = 0;
+        }
+    }
 }

@@ -51,6 +51,13 @@ public class GameManagerTimeline : IDontDestroy<GameManagerTimeline>
         dayDurationText.text = GetStringHour(maxHour - time);
     }
 
+    public void DebugDayList()
+    {
+        foreach (ModelActions model in listActionInDay)
+        {
+            Debug.Log(model.name);
+        }
+    }
 
     public int CountDaylist()
     {

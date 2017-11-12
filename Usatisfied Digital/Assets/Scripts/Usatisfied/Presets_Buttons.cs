@@ -16,7 +16,7 @@ public class Presets_Buttons : UIScrollAndDrag
 
     private void OnEnable()
     {
-        SetupButton(presetID);
+        //SetupButton(presetID);
     }
 
     public void SetupButton(int idde)
@@ -24,6 +24,7 @@ public class Presets_Buttons : UIScrollAndDrag
         ModelActions action = GameManager.GetInstance().GetTemplates(idde);
         name = action.name;
         namePreset.GetComponent<LanguageText>().ChangeInitialReference(action.name);
+        Debug.Log(LocalizationManager.GetText(action.name));
         namePreset.text = LocalizationManager.GetText(action.name);
         iconPreset.sprite = action.icon;
     }
