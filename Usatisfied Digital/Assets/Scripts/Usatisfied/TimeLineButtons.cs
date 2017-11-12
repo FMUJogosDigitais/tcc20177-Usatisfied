@@ -141,12 +141,31 @@ public class TimeLineButtons : MonoBehaviour, IPointerDownHandler
     public void SetResiliencesFinal()
     {
         myaction.actionUse += 1;
-        GameManagerResilience.GetInstance().CallEventUpdateResiliences((int)myaction.physic, (int)myaction.mental, (int)myaction.social, (int)myaction.emotional);
-        if (myaction.actionType == ModelActions.ActionType.Sleep)
+        if (myaction.actionType != ModelActions.ActionType.Challenger)
         {
-            float recovery = GameManager.GetInstance().sleppPerMin * myaction.duration;
-            GameManagerResilience.GetInstance().CallEventRecoveryStress((int)recovery);
+            GameManagerResilience.GetInstance().CallEventUpdateResiliences((int)myaction.physic, (int)myaction.mental, (int)myaction.social, (int)myaction.emotional);
+            if (myaction.actionType == ModelActions.ActionType.Sleep)
+            {
+                float recovery = GameManager.GetInstance().GetResiliencePerMin(GameManager.Resiliences.Recovery) * myaction.duration;
+                GameManagerResilience.GetInstance().CallEventRecoveryStress((int)recovery);
+            }
         }
+        else
+        {
+            GameManagerResilience.GetInstance().CallEventUpdateResiliences(-(int)myaction.physic, -(int)myaction.mental, -(int)myaction.social, -(int)myaction.emotional);
+            if (myaction.satisfactionCost > 0)
+            {
+                if (GameManagerResilience.GetInstance().TotalSatisfaction - myaction.satisfactionCost >= 0)
+                {
+                    GameManagerResilience.GetInstance().TotalSatisfaction = - myaction.satisfactionCost;
+                }
+                else
+                {
+                    GameManagerResilience.ResetSatisfaction();
+                }
+            }
+        }
+        
     }
     public IEnumerator BarProgress(float time)
     {
@@ -164,7 +183,7 @@ public class TimeLineButtons : MonoBehaviour, IPointerDownHandler
     {
         GameManagerTimeline.GetInstance().DebugDayList();
         Debug.Log("------------------");
-        if (TimeLineController.inEdit == true)
+        if (TimeLineController.inEdit == true && myaction.actionType != ModelActions.ActionType.Challenger)
         {
             //Debug.Log(mybuttom.name);
             gmtl.RemoveActionInList(this.daylistRef);

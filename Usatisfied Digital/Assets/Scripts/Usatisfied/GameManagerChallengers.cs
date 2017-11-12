@@ -37,7 +37,7 @@ public class GameManagerChallengers : IDontDestroy<GameManagerChallengers>
     public void AddChallengerOnDrop(Transform parent)
     {
         ModelActions[] challengers = GameManager.GetInstance().GetChallenger();
-        float chanceForChallenger = GameManager.GetInstance().TotalDay/ GameManager.roundsDaysGame;
+        float chanceForChallenger = GameManager.GetInstance().TotalDay/ GameManager.GetInstance().RoundsDaysGame;
         if (chanceForChallenger > 0 && actulChallegerInDay <= maxChallengerDay)
         {
             // começam os desafios

@@ -7,12 +7,12 @@ namespace Usatisfied.Navigation {
 
         public void TapToEditTimeLine()
         {
-            if (GameManagerTimeline.GetInstance().CountDaylist() <= 0)
+            if (GameManagerTimeline.GetInstance().CountDaylist() <= 0 && NavigationManager.tapOn)
             {
                 GameManager.ToggleStartGame();
                 NavigationManager.GetInstance().ToggleEditTimeline();
             }
-            
+
         }
         public void TapToIndex()
         {

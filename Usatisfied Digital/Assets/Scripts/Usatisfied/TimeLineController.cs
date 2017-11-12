@@ -32,6 +32,7 @@ public class TimeLineController : MonoBehaviour
         }
         else
         {
+            NavigationManager.tapOn = false;
             CreateList(content);
             StartCoroutine(DayCycle());
         }
@@ -84,6 +85,7 @@ public class TimeLineController : MonoBehaviour
     private void FinishAction(TimeLineButtons button)
     {
         button.SetResiliencesFinal();
+        
     }
     private void AddNewDay()
     {
@@ -130,6 +132,8 @@ public class TimeLineController : MonoBehaviour
         }
         AddNewDay();
         TutorialFase();
+        yield return new WaitForSeconds(1.5f);
+        NavigationManager.GetInstance().ToggleLiderBoard();
     }
 
     void TutorialFase()

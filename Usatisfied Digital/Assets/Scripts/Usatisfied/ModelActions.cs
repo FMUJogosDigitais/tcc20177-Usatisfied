@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-using System;
+
 
 [System.Serializable]
 public class ModelActions 
 {
     public string name;
-    public int modelId;
+    //public int modelId;
     public enum ActionType { Sleep, Feed, Career, Fun, Sports, Health, Schedule, Challenger }
     public Sprite icon;
     public ActionType actionType;
@@ -72,10 +72,10 @@ public class ModelActions
 
     public void GeneradeResilience()
     {
-        physic = (GameManager.GetInstance().fisicoPerMin * fisicoMulti) * duration;
-        mental = (GameManager.GetInstance().mentalPerMin * mentalMulti) * duration;
-        social = (GameManager.GetInstance().socialPerMin * socialMulti) * duration;
-        emotional = (GameManager.GetInstance().emocionalPerMin * emotionalMulti) * duration;
+        physic = (GameManager.GetInstance().GetResiliencePerMin(GameManager.Resiliences.Phisycs) * fisicoMulti) * duration;
+        mental = (GameManager.GetInstance().GetResiliencePerMin(GameManager.Resiliences.Mental) * mentalMulti) * duration;
+        social = (GameManager.GetInstance().GetResiliencePerMin(GameManager.Resiliences.Social) * socialMulti) * duration;
+        emotional = (GameManager.GetInstance().GetResiliencePerMin(GameManager.Resiliences.Emotional) * emotionalMulti) * duration;
     }
     public float GetResilienceAction(float baseAction, float value, float maxponts)
     {
@@ -91,8 +91,8 @@ public class ModelActions
     {
         if (actionType == ActionType.Sleep)
         {
-            float sleep = GameManager.GetInstance().sleppPerMin * duration;
-            sleep = (sleep > maxponts) ? maxponts : GameManager.GetInstance().sleppPerMin * duration;
+            float sleep = GameManager.GetInstance().GetResiliencePerMin(GameManager.Resiliences.Recovery) * duration;
+            sleep = (sleep > maxponts) ? maxponts : GameManager.GetInstance().GetResiliencePerMin(GameManager.Resiliences.Recovery) * duration;
             return sleep / maxponts;
         }
         return 0;
@@ -113,10 +113,5 @@ public class ModelActions
             }
         }
         return 0;
-    }
-
-    public void SetModel()
-    {
-        throw new NotImplementedException();
     }
 }

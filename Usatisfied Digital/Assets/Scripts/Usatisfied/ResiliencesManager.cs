@@ -36,6 +36,11 @@ public class ResiliencesManager : MonoBehaviour
         set
         {
             totalResilience += SetTotalResilience(value);
+            if (totalResilience < 0)
+            {
+                TotalStress = totalResilience * -1;
+                totalResilience = 0;
+            }
             ChangefillBar(resilienceImage, (float)totalResilience / 100);
             //Debug.Log(resiliences.ToString() + " Gerou: " + totalResilience);
             if (totalResilience >= maxresilience)
@@ -45,6 +50,7 @@ public class ResiliencesManager : MonoBehaviour
                 //Debug.Log("RETORNO "+ SetTotalSatisfaction(totalResilience));
                 totalResilience = 0;
             }
+            
         }
     }
 
@@ -57,6 +63,12 @@ public class ResiliencesManager : MonoBehaviour
         {
             //Debug.Log(resiliences.ToString() + " Passou Stress: " + value);
             totalStress += SetTotalStress(value);
+            if (totalStress < 0)
+            {
+                isStress = false;
+                StressActions();
+                totalStress = 0;
+            }
             //Debug.Log(resiliences.ToString() + " Gerou Stress: " + totalStress);
             if (totalStress > maxresilience)
             {
@@ -114,6 +126,22 @@ public class ResiliencesManager : MonoBehaviour
     {
         if (!isStress)
         {
+            switch (resiliences)
+            {
+                case GameManager.Resiliences.Emotional:
+                    GameManagerResilience.emotionaltimes += 1;
+                    break;
+                case GameManager.Resiliences.Mental:
+                    GameManagerResilience.mentalTimes += 1;
+                    break;
+                case GameManager.Resiliences.Phisycs:
+                    GameManagerResilience.physicsTimes += 1;
+                    break;
+                case GameManager.Resiliences.Social:
+                    GameManagerResilience.socialTimes += 1;
+                    break;
+
+            }
             gmr.GainSatisfation();
             return 1;
         }

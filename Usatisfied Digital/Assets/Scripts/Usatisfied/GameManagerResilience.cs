@@ -16,6 +16,11 @@ public class GameManagerResilience : IDontDestroy<GameManagerResilience>
     public bool emotionalStressed;
     public bool socialStressed;
 
+    public static int physicsTimes;
+    public static int mentalTimes;
+    public static int emotionaltimes;
+    public static int socialTimes;
+
     [SerializeField] static int totalSatisfaction = 0;
     public int TotalSatisfaction
     {
@@ -88,5 +93,11 @@ public class GameManagerResilience : IDontDestroy<GameManagerResilience>
                 break;
 
         }
+    }
+
+    public static void ResetSatisfaction()
+    {
+        totalSatisfaction = 0;
+        GetInstance().panelSatisfation.GetComponentInChildren<Text>().text = totalSatisfaction.ToString();
     }
 }
