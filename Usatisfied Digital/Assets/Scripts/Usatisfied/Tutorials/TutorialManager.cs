@@ -26,6 +26,8 @@ public class TutorialManager : IDontDestroy<TutorialManager>
 #if UNITY_EDITOR
         PlayerPrefTutorial.ResetTutorial();
 #endif
+
+        startTutorial = !SetPlayerPref.GetPlayerTutorial();
         if (startTutorial == false)
         {
             startTutorial = true;
@@ -74,11 +76,15 @@ public class TutorialManager : IDontDestroy<TutorialManager>
     }
     public static void ToggleMessage(bool set)
     {
+        int anim = (set == true) ?2:0;
+        AnimationManager.GetInstance().FaceChange(anim);
         GetInstance().messagemBallon.SetActive(set);
     }
 
     public static void ToggleMessage()
     {
+        int anim = (GetInstance().messagemBallon.activeSelf == false) ? 2 : 0;
+        AnimationManager.GetInstance().FaceChange(anim);
         GetInstance().messagemBallon.SetActive(!GetInstance().messagemBallon.activeSelf);
     }
 

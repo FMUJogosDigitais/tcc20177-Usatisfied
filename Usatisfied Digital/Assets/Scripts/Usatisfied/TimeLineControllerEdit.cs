@@ -12,7 +12,7 @@ public class TimeLineControllerEdit : TimeLineController, IDropHandler
 
     private void Awake()
     {
-        
+
     }
 
     protected override void OnEnable()
@@ -37,7 +37,7 @@ public class TimeLineControllerEdit : TimeLineController, IDropHandler
             string message = LocalizationManager.GetText("Let's try the food first!");
             TutorialManager.GetInstance().messagemBallon.GetComponentInChildren<TextAnimated>().SetMessage(message, FinishCallbak);
             return;
-        } 
+        }
         if (preset != null && GameManagerTimeline.maxHour - gmtl.DayDuration > 0)
         {
             if (GameManager.TutorialMode && preset.presetID == 1)
@@ -82,13 +82,14 @@ public class TimeLineControllerEdit : TimeLineController, IDropHandler
         //Debug.Log(TutorialManager.GetTutorialFase());
         if (GameManager.TutorialMode && TutorialManager.GetTutorialFase() == 37)
         {
-                TutorialController tutorialController = FindObjectOfType<TutorialController>();
-                TutorialManager.ToggleImagePanel(true);
-                TutorialManager.ToggleMessage(true);
-                TutorialManager.pauseTutorial = false;
-                TutorialManager.finishMessage = true;
-                TutorialManager.ToogleButtonNextTutorial();
-                tutorialController.NextOnTap();
+            AnimationManager.GetInstance().FaceChange(0);
+            TutorialController tutorialController = FindObjectOfType<TutorialController>();
+            TutorialManager.ToggleImagePanel(true);
+            TutorialManager.ToggleMessage(true);
+            TutorialManager.pauseTutorial = false;
+            TutorialManager.finishMessage = true;
+            TutorialManager.ToogleButtonNextTutorial();
+            tutorialController.NextOnTap();
         }
     }
     protected override void OnDisable()

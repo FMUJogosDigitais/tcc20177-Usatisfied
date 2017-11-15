@@ -7,7 +7,7 @@ namespace Usatisfied.Navigation {
 
         public void TapToEditTimeLine()
         {
-            if (GameManagerTimeline.GetInstance().CountDaylist() <= 0 && NavigationManager.tapOn)
+            if (GameManagerTimeline.GetInstance().CountDaylist() <= 0 && NavigationManager.tapOn && GameManager.GameOver == false)
             {
                 GameManager.ToggleStartGame();
                 NavigationManager.GetInstance().ToggleEditTimeline();
@@ -16,8 +16,11 @@ namespace Usatisfied.Navigation {
         }
         public void TapToIndex()
         {
-            GameManager.ToggleStartGame();
-            NavigationManager.GetInstance().ToggleIndex();
+            if(GameManager.GameOver == false)
+            {
+                GameManager.ToggleStartGame();
+                NavigationManager.GetInstance().ToggleIndex();
+            }
         }
     }
 }

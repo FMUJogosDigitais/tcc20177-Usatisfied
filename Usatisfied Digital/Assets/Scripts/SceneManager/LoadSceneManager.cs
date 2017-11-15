@@ -46,6 +46,7 @@ public class LoadSceneManager : IDontDestroy<LoadSceneManager>
             StartCoroutine(LoadingScreen(idScene, time));
         }
     }
+
     /// <summary>
     /// Controla a tela de loading
     /// </summary>

@@ -1,9 +1,5 @@
 ﻿using System.Collections;
-using System;
-using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
-using Utils.Localization;
 
 public class TimeLineController : MonoBehaviour
 {
@@ -132,8 +128,18 @@ public class TimeLineController : MonoBehaviour
         }
         AddNewDay();
         TutorialFase();
-        yield return new WaitForSeconds(1.5f);
-        NavigationManager.GetInstance().ToggleLiderBoard();
+        if (GameManager.GetInstance().MaxDaysGame > GameManager.GetInstance().TotalDay)
+        {
+            yield return new WaitForSeconds(1f);
+            NavigationManager.GetInstance().ToggleLiderBoard();
+        }
+        else
+        {
+            GameManager.GetInstance().StartGameOver();
+            yield return new WaitForSeconds(1f);
+            NavigationManager.GetInstance().ToggleLiderBoard();
+        }
+        
     }
 
     void TutorialFase()

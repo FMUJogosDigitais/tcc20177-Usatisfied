@@ -30,4 +30,12 @@ public class ChangeSceneButton : MonoBehaviour {
             loadSceneManager.LoadScene(nScene);
         }
     }
+
+    public void ResetScene()
+    { 
+        if (loadSceneManager != null)
+        {
+            loadSceneManager.LoadScene(2);
+        }
+    }
 }

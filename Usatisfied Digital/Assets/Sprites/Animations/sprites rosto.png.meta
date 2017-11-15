@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: b70ce504a417e244090f29f772279e14
-timeCreated: 1509201164
+timeCreated: 1510764805
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -23,6 +23,7 @@ TextureImporter:
     21300032: icone vizinho barulhento
     21300034: icone preguica
     21300036: icone transito
+    21300038: palpebra
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -371,6 +372,20 @@ TextureImporter:
         height: 72
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: palpebra
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 270
+        width: 30
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

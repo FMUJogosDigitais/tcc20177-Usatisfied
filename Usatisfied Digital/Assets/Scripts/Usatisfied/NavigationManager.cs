@@ -58,6 +58,6 @@ public class NavigationManager : IDontDestroy<NavigationManager>
     {
         ClearPanels();
         TogglePanel(3);
-        GameManagerLeaderBoard.GetInstance().PopulateList(GameManagerResilience.GetInstance().TotalSatisfaction);
+        
     }
 }

@@ -31,7 +31,7 @@ public class GameManagerLeaderBoard : IDontDestroy<GameManagerLeaderBoard>
     [SerializeField]
     List<ModelLeaderBoard> listLeaderBoard;
 
-    private void OnEnable()
+    private void Start()
     {
         listLeaderBoard = new List<ModelLeaderBoard>();
         if (otherPersonas.Length <= 0)
@@ -54,7 +54,6 @@ public class GameManagerLeaderBoard : IDontDestroy<GameManagerLeaderBoard>
                 otherPersonas[x].myPersona = (ModelLeaderBoard.Persona)x;
             }
         }
-
     }
 
     ModelLeaderBoard Player()
@@ -82,11 +81,15 @@ public class GameManagerLeaderBoard : IDontDestroy<GameManagerLeaderBoard>
             otherPersonas[2].mySatisfaction = Random.Range(otherPersonas[1].mySatisfaction + 1, (mediaSatisfationDay * totalday) + minSatisfactionPoints);
             otherPersonas[3].mySatisfaction = Random.Range(otherPersonas[2].mySatisfaction + 1, (mediaSatisfationDay * totalday) + mediaSatisfationDay);
 
+            ResiliencePoints(otherPersonas[0]);
+            ResiliencePoints(otherPersonas[1]);
+            ResiliencePoints(otherPersonas[2]);
+            ResiliencePoints(otherPersonas[3]);
+
             listLeaderBoard.Add(Player());
             listLeaderBoard.AddRange(otherPersonas);
-            Debug.Log(listLeaderBoard.Count);
 
-            listLeaderBoard = listLeaderBoard.OrderBy(x => x.mySatisfaction).ToList();
+            listLeaderBoard = listLeaderBoard.OrderBy(x => x.mySatisfaction).ThenBy(x=>x.myEmotional).ThenBy(x => x.mySocial).ThenBy(x => x.myPhysics).ToList();
 
             for (int x = listLeaderBoard.Count -1 ; x>=0; x--)
             {
@@ -94,15 +97,45 @@ public class GameManagerLeaderBoard : IDontDestroy<GameManagerLeaderBoard>
                 go.GetComponent<LeaderBoardButtons>().SetCard(listLeaderBoard[x]);
             }
         }
-        NavigationManager.tapOn = true;
+        if(!GameManager.GameOver)
+            NavigationManager.tapOn = true;
     }
     void ClearBoard()
     {
         listLeaderBoard = new List<ModelLeaderBoard>();
         foreach (Transform child in contentlist)
         {
-            child.parent = null;
-            Destroy(child);
+            Destroy(child.gameObject);
+        }
+    }
+
+    void ResiliencePoints(ModelLeaderBoard persona)
+    {
+        int satisf = persona.mySatisfaction;
+        for (int x = 0; x < 4; x++)
+        {
+            if (satisf > 0)
+            {
+                switch (x)
+                {
+                    case 0:
+                        persona.myEmotional = Random.Range(0, satisf +1);
+                        satisf -= persona.myEmotional;
+                        break;
+                    case 1:
+                        persona.mySocial = Random.Range(0, satisf+1);
+                        satisf -= persona.mySocial;
+                        break;
+                    case 2:
+                        persona.myPhysics = Random.Range(0, satisf+1);
+                        satisf -= persona.myPhysics;
+                        break;
+                    case 3:
+                        persona.myMental = satisf;
+                        satisf -= persona.myMental;
+                        break;
+                }
+            }
         }
     }
     void ReShuffle(Sprite[] avatars)

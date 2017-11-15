@@ -28,12 +28,13 @@ namespace Utils.Localization
         private void SetInitialReferences()
         {
             localizationManager = FindObjectOfType<LocalizationManager>();
-            textLocalize = GetComponent<Text>().text;
+            
         }
         // Use this for initialization
 
         private void Start()
         {
+            textLocalize = GetComponent<Text>().text;
             OnChangeLanguage(localizationManager);
         }
 

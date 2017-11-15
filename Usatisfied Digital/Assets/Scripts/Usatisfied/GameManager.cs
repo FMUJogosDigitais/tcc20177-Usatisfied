@@ -1,13 +1,14 @@
-﻿using System.Collections;
-using UnityEngine.UI;
+﻿using UnityEngine.UI;
 using System;
 using UnityEngine;
 using Utils.Localization;
 
-public class GameManager : IDontDestroy<GameManager> {
+public class GameManager : IDontDestroy<GameManager>
+{
 
     public enum Resiliences { Mental, Phisycs, Emotional, Social, Satisfaction, Recovery }
-    [SerializeField][Range(0f, 1f)]
+    [SerializeField]
+    [Range(0f, 1f)]
     float physicPerMin = .30f;
     [SerializeField]
     [Range(0f, 1f)]
@@ -47,9 +48,13 @@ public class GameManager : IDontDestroy<GameManager> {
     private ModelActions[] templateActions;
     [SerializeField]
     private ModelActions[] templateChallengers;
-
+    private static bool gameOver = false;
+    public static bool GameOver { get { return gameOver; } }
     private static bool _startGame = false;
     public static bool _sleepAction { get; set; }
+
+    [SerializeField]
+    GameObject GameOverPanel;
 
     public static bool StartGame
     {
@@ -103,4 +108,16 @@ public class GameManager : IDontDestroy<GameManager> {
         }
     }
 
+    public void StartGameOver()
+    {
+        TutorialMode = false;
+        _startGame = false;
+        gameOver = true;
+        GameOverPanel.SetActive(true);
+    }
+
+    public void StartTutorialToggle(bool toggle)
+    {
+        TutorialMode = toggle;
+    }
 }

@@ -21,5 +21,13 @@ public class PlaySFX : MonoBehaviour {
 		myAudioSource.Play ();
 	}
 
+    public void ChangeFaceNormal()
+    {
+        AnimationManager.GetInstance().FaceChange(0);
+    }
 
+    public void ChangeFaceSatisfied()
+    {
+        AnimationManager.GetInstance().FaceChange(4);
+    }
 }

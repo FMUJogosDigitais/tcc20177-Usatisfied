@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class LeaderBoardButtons : MonoBehaviour {
@@ -15,7 +13,6 @@ public class LeaderBoardButtons : MonoBehaviour {
     public void SetCard(ModelLeaderBoard card)
     {
         //criacard
-        Debug.Log(card.myface);
         avtar.sprite = card.myface;
         satisfidText.text = card.mySatisfaction.ToString();
         emotional.text = card.myEmotional.ToString();

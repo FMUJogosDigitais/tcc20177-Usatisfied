@@ -28,7 +28,9 @@ public class ForPoedit : MonoBehaviour
         GetText("Trafic");
         GetText("Laziness");
         GetText("Rain");
-        GetText("Apple");
+        GetText("Start whit Tutorial");
+        GetText("Restart");
+        GetText("Thank you for play!");
 
     }
     #region DUMMY FUNCTIONS

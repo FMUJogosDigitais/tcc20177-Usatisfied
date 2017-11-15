@@ -53,6 +53,7 @@ namespace Utils.Localization
         public static void SetNewLanguage(Languages lng)
         {
             language = lng;
+            GetInstance().OnChangeLanguage(GetInstance());
 #if !UNITY_EDITOR
                 LanguagePlayerPref.SetPlayerLanguage(lng);
 #endif
@@ -177,10 +178,12 @@ namespace Utils.Localization
             ReadPhase phase = ReadPhase.None;
             if (lang == defaultLang)
             {
-                if (textTable != null)
-                    textTable.Clear();
+                //if (textTable != null)
+                textTable = new Dictionary<string, string[]>();
+                textTable.Clear();
                 language = defaultLang;
                 phase = ReadPhase.None;
+                OnChangeLanguage(this);
                 initialized = true;
                 return;
             }

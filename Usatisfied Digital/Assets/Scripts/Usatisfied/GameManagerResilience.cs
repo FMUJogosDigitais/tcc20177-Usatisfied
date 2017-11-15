@@ -21,6 +21,8 @@ public class GameManagerResilience : IDontDestroy<GameManagerResilience>
     public static int emotionaltimes;
     public static int socialTimes;
 
+    public int playerstress = 0;
+
     [SerializeField] static int totalSatisfaction = 0;
     public int TotalSatisfaction
     {
@@ -77,6 +79,7 @@ public class GameManagerResilience : IDontDestroy<GameManagerResilience>
 
     public void SetResilienceStressed(GameManager.Resiliences resilience, bool stress)
     {
+        playerstress += (stress == true) ? 1 : -1;
         switch (resilience)
         {
             case GameManager.Resiliences.Mental:
@@ -91,8 +94,9 @@ public class GameManagerResilience : IDontDestroy<GameManagerResilience>
             case GameManager.Resiliences.Social:
                 socialStressed = stress;
                 break;
-
         }
+        Debug.Log(playerstress);
+        AnimationManager.GetInstance().FaceChange( 5 + playerstress);
     }
 
     public static void ResetSatisfaction()

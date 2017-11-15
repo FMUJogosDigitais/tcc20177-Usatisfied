@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnimationManager : IDontDestroy<AnimationManager> {
 
     public Animator player;
+    public Animator playerFace;
     
     // Quads
     public GameObject terra;
@@ -24,7 +25,7 @@ public class AnimationManager : IDontDestroy<AnimationManager> {
 	public GameObject lazyScene;
 
     // Ganhando satisfação
-    public GameObject satisfationStars;
+    public Animator satisfationStars;
 
     // Use this for initialization
     void Start () {
@@ -38,12 +39,11 @@ public class AnimationManager : IDontDestroy<AnimationManager> {
 
     public void StatisfactionEarningAnimation()
     {
-        satisfationStars.GetComponent<Animator>().SetTrigger("satisfactionEarn");
+        satisfationStars.SetTrigger("satisfactionEarn");
     }
 
     public void SetActionAnimation(ModelActions.ActionType actionType, string subAnimation = "")
     {
-        float sorteio = Random.Range(0f, 10f);
         ModelActions.ActionType aninToSet = actionType;
         TurnOffScenaries();
         SetQuadsMove(0f);
@@ -66,12 +66,7 @@ public class AnimationManager : IDontDestroy<AnimationManager> {
                         SetQuadsMove(0.3f);
                         StressManager.esporteEstressada = false;
                     }
-                    else if (sorteio <= 5f)
-                    {
-                        player.SetTrigger("Walk");
-                        SetQuadsMove(0.1f);
-                    }
-                    else if (sorteio >= 5f)
+                    else 
                     {
                         player.SetTrigger("Run");
                         SetQuadsMove(0.3f);
@@ -115,6 +110,12 @@ public class AnimationManager : IDontDestroy<AnimationManager> {
                     }
                         break;
                 }
+		case ModelActions.ActionType.Schedule:
+			{
+				player.SetTrigger("Walk");
+				SetQuadsMove(0.1f);
+				break;
+			}
 
             case ModelActions.ActionType.Challenger:
                 {
@@ -205,7 +206,41 @@ public class AnimationManager : IDontDestroy<AnimationManager> {
                 break;
         }
     }
+    public void FaceChange(int face)
+    {
+        switch (face)
+        {
+            case 0:
+                playerFace.SetTrigger("Normal");
+                break;
+            case 1:
+                playerFace.SetTrigger("Normalv2");
+                break;
+            case 2:
+                playerFace.SetTrigger("Tutorial");
+                break;
+            case 3:
+                playerFace.SetTrigger("Satisfaction");
+                break;
+            case 4:
+                playerFace.SetTrigger("Satisfationv2");
+                break;
+            case 5:
+                playerFace.SetTrigger("Angry");
+                break;
+            case 6:
+                playerFace.SetTrigger("Angryv2");
+                break;
+            case 7:
+                playerFace.SetTrigger("Angryv3");
+                break;
+            case 8:
+                playerFace.SetTrigger("Angryv4");
+                break;
 
+        }
+
+    }
     public void TestButton(string test)
     {
         switch (test)

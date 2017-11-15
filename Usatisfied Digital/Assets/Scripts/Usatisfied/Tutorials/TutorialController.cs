@@ -6,7 +6,7 @@ using UnityEngine;
 public class TutorialController : MonoBehaviour
 {
     [SerializeField]
-    private int nextMessage =20;
+    private int nextMessage;
     private TextAnimated texAnimated;
 
     public GameObject[] referenceButton;
@@ -56,7 +56,6 @@ public class TutorialController : MonoBehaviour
                 {
                     nextMessage++;
                     TutorialManager.SetTutorialPhase(nextMessage);
-                    Debug.Log("Proxima");
                     NextMessagens(nextMessage);
                 }
                 else
@@ -70,6 +69,7 @@ public class TutorialController : MonoBehaviour
     void MessageFirst()
     {
         TutorialManager.ToggleMessage(true);
+        AnimationManager.GetInstance().FaceChange(2);
         string message = LocalizationManager.GetText("_Hello, My name is Maira, welcome to U-Satisfied");
         texAnimated.SetMessage(message, TutorialManager.GetInstance().FinishCallbak);
 
@@ -155,6 +155,7 @@ public class TutorialController : MonoBehaviour
             case 13:
                 ClearReferencias();
                 TutorialManager.ToggleMessage(true);
+                AnimationManager.GetInstance().FaceChange(4);
                 message = LocalizationManager.GetText("whenever I fillup a resilience to its maximum I get very SATISFIED!");
                 texAnimated.SetMessage(message, TutorialManager.GetInstance().FinishCallbak);
                 break;
@@ -166,18 +167,17 @@ public class TutorialController : MonoBehaviour
                 TutorialManager.ToogleButtonNextTutorial();
                 break;
             case 15:
-                Debug.LogWarning("Colcoar mudança de animação aqui");
                 TutorialManager.ToggleMessage(true);
                 message = LocalizationManager.GetText("So I accumulate satisfaction points that at the end of the day will help me");
                 texAnimated.SetMessage(message, TutorialManager.GetInstance().FinishCallbak);
                 break;
             case 16:
-                Debug.LogWarning("Colcoar mudança de animação aqui");
                 TutorialManager.ToggleMessage(true);
+                AnimationManager.GetInstance().FaceChange(4);
                 message = LocalizationManager.GetText("to meet new challenges. At the end SATISFACTION is all we want, is it?");
                 texAnimated.SetMessage(message, TutorialManager.GetInstance().FinishCallbak);
                 break;
-            case 17:
+            case 17:;
                 TutorialManager.ToggleMessage(false);
                 ClearReferencias();
                 StartCoroutine(WaitASecond(1));
@@ -185,7 +185,6 @@ public class TutorialController : MonoBehaviour
                 TutorialManager.ToogleButtonNextTutorial();
                 break;
             case 18:
-                Debug.LogWarning("Colcoar mudança de animação aqui");
                 TutorialManager.ToggleMessage(true);
                 message = LocalizationManager.GetText("Well, now enough talk and let's organize ourselves.");
                 texAnimated.SetMessage(message, TutorialManager.GetInstance().FinishCallbak);
@@ -241,6 +240,7 @@ public class TutorialController : MonoBehaviour
                 texAnimated.SetMessage(message, TutorialManager.GetInstance().FinishCallbak);
                 break;
             case 28:
+                AnimationManager.GetInstance().FaceChange(5);
                 TutorialManager.ToggleMessage(true);
                 message = LocalizationManager.GetText("Avoid the hype, do something for a long time can be a STRESS");
                 texAnimated.SetMessage(message, TutorialManager.GetInstance().FinishCallbak);
@@ -279,51 +279,41 @@ public class TutorialController : MonoBehaviour
                 break;
             case 35:
                 TutorialManager.ToggleMessage(true);
+                AnimationManager.GetInstance().FaceChange(6);
                 message = LocalizationManager.GetText("if the amount exceeds the bar, we will accumulate stress");
                 texAnimated.SetMessage(message, TutorialManager.GetInstance().FinishCallbak);
                 break;
             case 36:
                 TutorialManager.ToggleMessage(true);
-                message = LocalizationManager.GetText("Let's go back to the editing screen! Clicking on the screen");
-                texAnimated.SetMessage(message, TutorialManager.GetInstance().FinishCallbak);
-                break;
-            case 37:
-                TutorialManager.ToggleMessage(false);
-                ClearReferencias();
-                TutorialManager.pauseTutorial = true;
-                TutorialManager.ToggleImagePanel(false);
-                break;
-            case 38:
-                TutorialManager.ToggleMessage(true);
                 message = LocalizationManager.GetText("I think I can leave everything under your care! But before some tips");
                 texAnimated.SetMessage(message, TutorialManager.GetInstance().FinishCallbak);
                 break;
-            case 39:
+            case 37:
                 TutorialManager.ToggleMessage(true);
                 message = LocalizationManager.GetText("The action of sleeping, recovering the stressed resilience, then");
                 texAnimated.SetMessage(message, TutorialManager.GetInstance().FinishCallbak);
                 break;
-            case 40:
+            case 38:
                 TutorialManager.ToggleMessage(true);
                 message = LocalizationManager.GetText("It is important in the day there is a sleeping action");
                 texAnimated.SetMessage(message, TutorialManager.GetInstance().FinishCallbak);
                 break;
-            case 41:
+            case 39:
                 TutorialManager.ToggleMessage(true);
                 message = LocalizationManager.GetText("to remove an action double click on it!");
                 texAnimated.SetMessage(message, TutorialManager.GetInstance().FinishCallbak);
                 break;
-            case 42:
+            case 40:
                 TutorialManager.ToggleMessage(true);
                 message = LocalizationManager.GetText("sometimes there will be some unexpected challenges");
                 texAnimated.SetMessage(message, TutorialManager.GetInstance().FinishCallbak);
                 break;
-            case 43:
+            case 41:
                 TutorialManager.ToggleMessage(true);
                 message = LocalizationManager.GetText("but do not worry, with resilience we can overcome");
                 texAnimated.SetMessage(message, TutorialManager.GetInstance().FinishCallbak);
                 break;
-            case 44:
+            case 42:
                 TutorialManager.ToggleMessage(true);
                 message = LocalizationManager.GetText("We're ready to go!");
                 texAnimated.SetMessage(message, TutorialManager.GetInstance().FinishCallbak);

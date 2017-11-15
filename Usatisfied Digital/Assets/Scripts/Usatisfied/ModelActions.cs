@@ -38,8 +38,8 @@ public class ModelActions
     [Header("Challenge Sets")]
     public string animationCode;
     public int satisfactionCost = 1;
-    [Range(0f, 1)]
-    public float chanceRate;
+    //[Range(0f, 1)]
+    //public float chanceRate;
 
     ModelActions() { }
     public ModelActions(ModelActions template)
@@ -65,7 +65,7 @@ public class ModelActions
             this.satisfaction = template.satisfaction;
             this.animationCode = template.animationCode;
             this.satisfactionCost = template.satisfactionCost;
-            this.chanceRate = template.chanceRate;
+            //this.chanceRate = template.chanceRate;
         }
         GeneradeResilience();
     }

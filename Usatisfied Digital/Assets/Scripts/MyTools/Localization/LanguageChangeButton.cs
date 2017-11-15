@@ -32,6 +32,7 @@ namespace Utils.Localization
         }
         void Start()
         {
+            textLocalize = LocalizationManager.GetLanguageName(languages);
             OnChangeLanguage(localizeManager);
             Button btn = GetComponent<Button>();
             btn.name = languages.ToString();

@@ -9,18 +9,24 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1728501601301690}
+  m_RootGameObject: {fileID: 1260605358990336}
   m_IsPrefabParent: 1
---- !u!1 &1728501601301690
+--- !u!1 &1260605358990336
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4035791163900050}
-  - component: {fileID: 114514764995712032}
-  - component: {fileID: 114382600225580774}
+  - component: {fileID: 4496365575520392}
+  - component: {fileID: 114919355850352372}
+  - component: {fileID: 114476045639313466}
+  - component: {fileID: 114486633416204866}
+  - component: {fileID: 114743474801843222}
+  - component: {fileID: 114470789501978416}
+  - component: {fileID: 114527063303830496}
+  - component: {fileID: 114244045890198920}
+  - component: {fileID: 114175624971464240}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -28,40 +34,397 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4035791163900050
+--- !u!4 &4496365575520392
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1728501601301690}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 1260605358990336}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114382600225580774
+--- !u!114 &114175624971464240
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1728501601301690}
-  m_Enabled: 1
+  m_GameObject: {fileID: 1260605358990336}
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f210aa46eb5fd448bc73d3f786f08fe, type: 3}
+  m_Script: {fileID: 11500000, guid: f74c178cee43fd846a5e031335f0e8f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isPersistant: 1
---- !u!114 &114514764995712032
+  PanelTutorial: {fileID: 0}
+  faceGirl: {fileID: 0}
+  messagemBallon: {fileID: 0}
+  buttonNext: {fileID: 0}
+  startTutorial: 0
+  delayStart: 2
+--- !u!114 &114244045890198920
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1728501601301690}
+  m_GameObject: {fileID: 1260605358990336}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04628c36096dafb40927ce06e82954a8, type: 3}
+  m_Script: {fileID: 11500000, guid: d59cbbdce9b930545913cf2bbbaea9ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isPersistant: 1
+  buttonLeaderBoard: {fileID: 1378144804301932, guid: 1c1086f57f24dbc49af63b5fed618781,
+    type: 2}
+  contentlist: {fileID: 0}
+  playerFace: {fileID: 21300002, guid: 910faaec3c4fad24c829b9eaa5d99eef, type: 3}
+  personasFace:
+  - {fileID: 21300004, guid: 910faaec3c4fad24c829b9eaa5d99eef, type: 3}
+  - {fileID: 21300010, guid: 910faaec3c4fad24c829b9eaa5d99eef, type: 3}
+  - {fileID: 21300006, guid: 910faaec3c4fad24c829b9eaa5d99eef, type: 3}
+  - {fileID: 21300000, guid: 910faaec3c4fad24c829b9eaa5d99eef, type: 3}
+  maxLeaderboards: 5
+  maxSatisfactionPoints: 200
+  mediaSatisfationDay: 3
+  minSatisfactionPoints: 2
+  maxResiliencePoints: 50
+  minResiliencePoints: 2
+  playerPosition: 0
+  otherPersonas: []
+  listLeaderBoard: []
+--- !u!114 &114470789501978416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1260605358990336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 365531340833c9d43a8bffd5b0d2ef88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPersistant: 1
+  panelPhysics: {fileID: 0}
+  panelMental: {fileID: 0}
+  panelEmotional: {fileID: 0}
+  panelSocial: {fileID: 0}
+  panelSatisfation: {fileID: 0}
+  physicsStressed: 0
+  mentalStressed: 0
+  emotionalStressed: 0
+  socialStressed: 0
+  playerstress: 0
+--- !u!114 &114476045639313466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1260605358990336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f89eba9b6312747b873554588b1c98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPersistant: 1
+  panels:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &114486633416204866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1260605358990336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36c52a98424984d44919b588aa1ad0e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPersistant: 1
+  buttonAction: {fileID: 1605516277545110, guid: a820e7071b8c15e45932712aeba92221,
+    type: 2}
+  listActionInDay: []
+  dayDurationText: {fileID: 0}
+  dayDuration: 0
+  durationScale: 5
+  resilienceMaxForSatisfation: 100
+--- !u!114 &114527063303830496
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1260605358990336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a613db2d41be8bd4ab9f48de73f18321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPersistant: 1
+  buttonChallenger: {fileID: 1001166885489594, guid: 6e5bc9c3fade38744a889beaa4e2d8ce,
+    type: 2}
+  porcentageChance: 0.4
+  maxChallengerDay: 4
+--- !u!114 &114743474801843222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1260605358990336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865d0149d178a8049aaeff8ed6ed5207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonPreset: {fileID: 1623704339915966, guid: 9622c27344804084383cbe898b20ff19,
+    type: 2}
+  content: {fileID: 0}
+--- !u!114 &114919355850352372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1260605358990336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df3c6d0a0ab8b848ae60805d714447f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPersistant: 1
+  physicPerMin: 0.6
+  mentalPerMin: 0.3
+  emotionalPerMin: 0.3
+  socialPerMin: 0.3
+  recoveryPerMin: 0.08
+  debugSpeedyTime: 1
+  maxDaysGame: 3
+  roundsDaysGame: 7
+  totalDayText: {fileID: 0}
+  totalDay: 0
+  templateActions:
+  - name: Sleep
+    icon: {fileID: 21300056, guid: 2d68010cc5ad5d847b11efdad9d62c35, type: 3}
+    actionType: 0
+    isBase: 1
+    isActive: 1
+    isStressed: 0
+    stressRate: 0
+    fisicoMulti: 0
+    mentalMulti: 0
+    socialMulti: 0
+    emotionalMulti: 0
+    duration: 1
+    actionUse: 0
+    satisfaction: 0
+    physic: 0
+    mental: 0
+    social: 0
+    emotional: 0
+    animationCode: 
+    satisfactionCost: 1
+  - name: Feed
+    icon: {fileID: 21300058, guid: 2d68010cc5ad5d847b11efdad9d62c35, type: 3}
+    actionType: 1
+    isBase: 1
+    isActive: 1
+    isStressed: 0
+    stressRate: 0
+    fisicoMulti: 1
+    mentalMulti: 0
+    socialMulti: 0
+    emotionalMulti: 0.5
+    duration: 60
+    actionUse: 0
+    satisfaction: 0
+    physic: 0
+    mental: 0
+    social: 0
+    emotional: 0
+    animationCode: 
+    satisfactionCost: 1
+  - name: Career
+    icon: {fileID: 21300020, guid: 2d68010cc5ad5d847b11efdad9d62c35, type: 3}
+    actionType: 2
+    isBase: 1
+    isActive: 1
+    isStressed: 0
+    stressRate: 0
+    fisicoMulti: 0
+    mentalMulti: 0.5
+    socialMulti: 0.5
+    emotionalMulti: 1
+    duration: 360
+    actionUse: 0
+    satisfaction: 0
+    physic: 0
+    mental: 0
+    social: 0
+    emotional: 0
+    animationCode: 
+    satisfactionCost: 1
+  - name: Fun
+    icon: {fileID: 21300052, guid: 2d68010cc5ad5d847b11efdad9d62c35, type: 3}
+    actionType: 3
+    isBase: 1
+    isActive: 1
+    isStressed: 0
+    stressRate: 0
+    fisicoMulti: 0
+    mentalMulti: 0.5
+    socialMulti: 0
+    emotionalMulti: 1
+    duration: 20
+    actionUse: 0
+    satisfaction: 0
+    physic: 0
+    mental: 0
+    social: 0
+    emotional: 0
+    animationCode: 
+    satisfactionCost: 1
+  - name: Sports
+    icon: {fileID: 21300054, guid: 2d68010cc5ad5d847b11efdad9d62c35, type: 3}
+    actionType: 4
+    isBase: 1
+    isActive: 1
+    isStressed: 0
+    stressRate: 0
+    fisicoMulti: 0.5
+    mentalMulti: 0.5
+    socialMulti: 0.5
+    emotionalMulti: 0
+    duration: 60
+    actionUse: 0
+    satisfaction: 0
+    physic: 0
+    mental: 0
+    social: 0
+    emotional: 0
+    animationCode: 
+    satisfactionCost: 1
+  - name: Health
+    icon: {fileID: 21300050, guid: 2d68010cc5ad5d847b11efdad9d62c35, type: 3}
+    actionType: 5
+    isBase: 1
+    isActive: 1
+    isStressed: 0
+    stressRate: 0
+    fisicoMulti: 1
+    mentalMulti: 0.5
+    socialMulti: 0
+    emotionalMulti: 0
+    duration: 50
+    actionUse: 0
+    satisfaction: 0
+    physic: 0
+    mental: 0
+    social: 0
+    emotional: 0
+    animationCode: 
+    satisfactionCost: 1
+  - name: Schedule
+    icon: {fileID: 21300062, guid: 2d68010cc5ad5d847b11efdad9d62c35, type: 3}
+    actionType: 6
+    isBase: 1
+    isActive: 1
+    isStressed: 0
+    stressRate: 0
+    fisicoMulti: 0
+    mentalMulti: 0.5
+    socialMulti: 0.5
+    emotionalMulti: 0.5
+    duration: 120
+    actionUse: 0
+    satisfaction: 0
+    physic: 0
+    mental: 0
+    social: 0
+    emotional: 0
+    animationCode: 
+    satisfactionCost: 1
+  templateChallengers:
+  - name: Neighbors
+    icon: {fileID: 21300032, guid: b70ce504a417e244090f29f772279e14, type: 3}
+    actionType: 7
+    isBase: 1
+    isActive: 1
+    isStressed: 0
+    stressRate: 0
+    fisicoMulti: 0.8
+    mentalMulti: 0.8
+    socialMulti: 0.8
+    emotionalMulti: 0.8
+    duration: 140
+    actionUse: 0
+    satisfaction: 0
+    physic: 0
+    mental: 0
+    social: 0
+    emotional: 0
+    animationCode: Des_VizinhoBarulhento
+    satisfactionCost: 2
+  - name: Trafic
+    icon: {fileID: 21300036, guid: b70ce504a417e244090f29f772279e14, type: 3}
+    actionType: 7
+    isBase: 1
+    isActive: 1
+    isStressed: 0
+    stressRate: 0
+    fisicoMulti: 0.5
+    mentalMulti: 0.5
+    socialMulti: 0.5
+    emotionalMulti: 0.5
+    duration: 120
+    actionUse: 0
+    satisfaction: 0
+    physic: 0
+    mental: 0
+    social: 0
+    emotional: 0
+    animationCode: Des_Transito
+    satisfactionCost: 1
+  - name: Laziness
+    icon: {fileID: 21300034, guid: b70ce504a417e244090f29f772279e14, type: 3}
+    actionType: 7
+    isBase: 1
+    isActive: 1
+    isStressed: 0
+    stressRate: 0
+    fisicoMulti: 0.3
+    mentalMulti: 0.3
+    socialMulti: 0.3
+    emotionalMulti: 0.3
+    duration: 90
+    actionUse: 0
+    satisfaction: 0
+    physic: 0
+    mental: 0
+    social: 0
+    emotional: 0
+    animationCode: Des_Preguica
+    satisfactionCost: 1
+  - name: Rain
+    icon: {fileID: 21300030, guid: b70ce504a417e244090f29f772279e14, type: 3}
+    actionType: 7
+    isBase: 1
+    isActive: 1
+    isStressed: 0
+    stressRate: 0
+    fisicoMulti: 0.1
+    mentalMulti: 0.1
+    socialMulti: 0.1
+    emotionalMulti: 0.1
+    duration: 60
+    actionUse: 0
+    satisfaction: 0
+    physic: 0
+    mental: 0
+    social: 0
+    emotional: 0
+    animationCode: Des_Chuva
+    satisfactionCost: 1
+  GameOverPanel: {fileID: 0}

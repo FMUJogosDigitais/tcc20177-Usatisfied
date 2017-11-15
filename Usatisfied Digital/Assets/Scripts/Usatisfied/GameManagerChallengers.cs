@@ -1,9 +1,5 @@
 ﻿using System.Linq;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 public class GameManagerChallengers : IDontDestroy<GameManagerChallengers>
 {
@@ -20,6 +16,7 @@ public class GameManagerChallengers : IDontDestroy<GameManagerChallengers>
     {
         SetInitialReference();
         gmtl.EventAddActionInList += AddChallengerOnDrop;
+        actulChallegerInDay = maxChallengerDay;
     }
     void SetInitialReference()
     {
@@ -37,29 +34,23 @@ public class GameManagerChallengers : IDontDestroy<GameManagerChallengers>
     public void AddChallengerOnDrop(Transform parent)
     {
         ModelActions[] challengers = GameManager.GetInstance().GetChallenger();
-        float chanceForChallenger = GameManager.GetInstance().TotalDay/ GameManager.GetInstance().RoundsDaysGame;
-        if (chanceForChallenger > 0 && actulChallegerInDay <= maxChallengerDay)
+        float chanceForChallenger = GameManager.GetInstance().TotalDay / GameManager.GetInstance().RoundsDaysGame;
+
+        if (chanceForChallenger > 0 && actulChallegerInDay < maxChallengerDay)
         {
-            // começam os desafios
-            for (int x=0; x < chanceForChallenger; x++)
+            float r = Random.Range(0, 1f);
+            //TODO: Aumentar a probabilidade conforme a resiliencia quebra
+            float newchance = porcentageChance * chanceForChallenger;
+            if (newchance >= r)
             {
-                float r = Random.Range(0,1f);
-                //TODO: Aumentar a probabilidade conforme a resiliencia quebra
-                float newchance = porcentageChance * chanceForChallenger;
-                if (newchance >= r)
+                int chanrand = Random.Range(0, challengers.Length);
+                challengers[chanrand].duration = gmtl.GetDuration(challengers[chanrand].duration);
+                if (gmtl.DayDuration < GameManagerTimeline.maxHour)
                 {
-                    int chanrand = Random.Range(0,challengers.Length);
-                    challengers[chanrand].duration = gmtl.GetDuration(challengers[chanrand].duration);
-                    if(gmtl.DayDuration < GameManagerTimeline.maxHour)
-                    {
-                        ConfigureChallengers(challengers[chanrand], parent);
-                    }
-                    
+                    ConfigureChallengers(challengers[chanrand], parent);
                 }
             }
-
         }
-
     }
 
     private void ConfigureChallengers(ModelActions challenger, Transform parent)
@@ -73,12 +64,12 @@ public class GameManagerChallengers : IDontDestroy<GameManagerChallengers>
         gmtl.DayDuration = gmtl.GetListActionInDay().Sum(action => action.duration) + challenger.duration;
         challenger.actionUse += 1;
         actulChallegerInDay += 1;
-        Debug.Log("Arrumou Problema");
+        //Debug.Log("Arrumou Problema");
     }
     private void AddActionInParent(Transform cont)
     {
         int childs = cont.childCount;
-        GameObject go = Instantiate<GameObject>(buttonChallenger, cont);
+        GameObject go = Instantiate(buttonChallenger, cont) as GameObject;
         go.GetComponent<TimeLineButtons>().RefrashAddList(childs);
         go.transform.SetAsFirstSibling();
     }
