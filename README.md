@@ -20,4 +20,7 @@ Inserir imagens do jogo.
 
 UNITY 3D VERSÃO 2017.1
 
+# Itch-io
+https://renatoinnocenti.itch.io/usatisfied
+
 **OBSERVAÇÃO: NO REPOSITÓRIO DEVE EXISTIR TODOS OS ARQUIVOS DESENVOLVIDOS PARA O PROJETO, INCLUINDO ARTES, MODELOS 3D ORIGINAIS, ETC..**
